@@ -272,6 +272,25 @@
   @media (max-width: 991px) {
     margin-top: 30px;
   }
+  picture {
+    cursor: pointer;
+    &:after {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      left: 0;
+      top: 0;
+      background: url("../public/images/dest/icons/icon-video.svg") no-repeat center;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+  }
 }
 .video-article__text{
   margin-top: 18px;
@@ -292,12 +311,6 @@
   width: 100%;
   height: 387px;
   overflow: hidden;
-  img{
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-  }
 }
 .video-article_first{
   margin-bottom: 10px;

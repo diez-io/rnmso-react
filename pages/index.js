@@ -111,11 +111,11 @@ function Afisha({posts}){
                             {(i === 0)
                              ?  <div className={cx("square-img__item", "square-img__unset_mob")}>
                                     <picture className={classNames(cxMain("poster-article__img"), cx("square-img__body", "square-img__body_circle"))}>
-                                    <Image objectFit="cover" layout="fill" src={post.image} alt=""/>
+                                    <Image  width={200} height={200} src={post.image} alt=""/>
                                     </picture>
                                 </div>
                             :   <picture className={cxMain("poster-article__img")}>
-                                    <Image objectFit="cover" layout="fill" src={post.image} alt=""/>
+                                    <Image  width={200} height={200} src={post.image} alt=""/>
                                 </picture>
                             }
                         </div>
@@ -137,7 +137,7 @@ function Orchestra({posts}) {
                                 "square-img__body",
                                 {"square-img__body_circle": i === 0}
                             )}>
-                                <Image objectFit="cover" layout="fill" src={post.image} alt=""/>
+                                <Image  width={200} height={200} src={post.image} alt=""/>
                             </picture>
                         </div>
                         <p className={cxMain("orchestra-article__text")}>
@@ -163,7 +163,7 @@ function Masters({posts}) {
                                     "square-img__body_circle" : i===2
                                 }
                             )}>
-                                <Image layout="fill" src={post.image} alt=""/>
+                                <Image  width={200} height={200} src={post.image} alt=""/>
                             </picture>
                         </div>
                         <div className={cxMain("masters-article__text")}>
@@ -211,7 +211,7 @@ function Video({posts}){
                     <div className={cx("grid__inner", "grid__inner_50")}>
                         <div className={cx("square-img__item")}>
                             <picture className={cx("square-img__body", "square-img__body_circle")} onClick={() => handleToggle(posts[0].url)}>
-                                <Image objectFit="cover" layout="fill" src={posts[0].image} alt=""/>
+                                <Image  width={200} height={200} src={posts[0].image} alt=""/>
                             </picture>
                         </div>
                     </div>
@@ -221,7 +221,7 @@ function Video({posts}){
                         i > 0 &&
                             <article key={"video_"+post.id} className={classNames(cxMain("video-article"), cx("grid__inner", "grid__inner_50"))}>
                                 <picture className={cxMain("video-article__img")} onClick={() => handleToggle(post.url)}>
-                                    <Image objectFit="cover" layout="fill" src={post.image} alt=""/>
+                                    <Image  width={200} height={200} src={post.image} alt=""/>
                                 </picture>
                                 <div className={cxMain("video-article__text")}>
                                     <p>{post.date} · {post.place}</p>
@@ -241,7 +241,7 @@ function Photo({posts}) {
             <div className={cxMain("photo-articles")}>
                 <article key={"photo_"+posts[0].id} className={cxMain("photo-article", "photo-article_first")}>
                     <picture className={cxMain("photo-article__img")}>
-                        <Image objectFit="cover" layout="fill" src={posts[0].image} alt=""/>
+                        <Image  width={200} height={200} src={posts[0].image} alt=""/>
                     </picture>
                     <div className={cxMain("photo-article__text")}>
                         <h4 className={cx("h4")}><Link className={cx("link")} href="#">{posts[0].title}</Link></h4>
@@ -253,7 +253,7 @@ function Photo({posts}) {
                         i > 0 &&
                             <article key={"photo_"+post.id} className={classNames(cxMain("photo-article"), cx("grid__inner", "grid__inner_50"))}>
                                 <picture className={cxMain("photo-article__img")}>
-                                    <Image objectFit="cover" layout="fill" src={post.image} alt=""/>
+                                    <Image  width={200} height={200} src={post.image} alt=""/>
                                 </picture>
                                 <div className={cxMain("photo-article__text")}>
                                     <h4 className={cx("h4")}><Link className={cx("link")} href="#">{post.title}</Link></h4>
@@ -273,7 +273,7 @@ function PhotoSlider({posts}) {
                 {posts.map((post) => (
                     <article key={"slider_"+post.id} className={cxMain("photo-slider-article")}>
                         <picture className={cxMain("photo-slider-article__img")}>
-                            <Image objectFit="cover" layout="fill" src={post.image} alt=""/>
+                            <Image  width={200} height={200} src={post.image} alt=""/>
                         </picture>
                         <div className={cxMain("photo-slider-article__text")}>
                             <Link className={cx("link")} href="#">{post.title}</Link>

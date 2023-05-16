@@ -77,7 +77,8 @@ function PosterItem({post}){
                     <Image width={200} height={200} src={post.image} alt=""/>
                 </picture>
                 <div className={cxAfisha("poster-section__text")}>
-                    <h4 className={cx("h4")}><Link className={cx("link")} href="#">{post.title}</Link>
+                    <h4 className={cx("h4")}>
+                        <Link className={cx("link")} href="#">{post.title}</Link>
                     </h4>
                     <p>
                         {post.people}
