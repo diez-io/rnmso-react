@@ -1,0 +1,27 @@
+.input__search{
+  position: relative;
+  width: 100%;
+  padding: 16px 10px 16px 35px;
+
+  background: none;
+  border: none;
+
+  @include font-size-28;
+
+  @media (max-width: 991px) {
+    padding-top: 28px;
+    padding-bottom: 28px;
+  }
+}
+.input__search:focus{
+  background: none;
+  border: none;
+  outline: none;
+}
+.input__search::placeholder{
+  opacity: 0.5;
+
+  @include font-size-28;
+  color: $color-dark1a;
+  text-transform: lowercase;
+}

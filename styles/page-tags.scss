@@ -1,0 +1,37 @@
+@import "variables.scss";
+@import "_mixins.scss";
+
+.page-tags{
+  display: flex;
+  align-items: flex-end;
+  justify-content: start;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 53px;
+  @media (max-width: 991px) {
+    margin-left: -20px;
+    margin-right: -20px;
+    margin-bottom: 35px;
+    padding: 0 5px;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+  a{
+    display: block;
+    padding: 10px 16px;
+    gap: 12px;
+
+    background: $color-lightgray;
+    border-radius: 22px;
+
+    font-size: $font-size-m;
+    line-height: $line-height-m;
+    letter-spacing: $letter-m;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+}

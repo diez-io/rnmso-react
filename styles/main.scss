@@ -1,0 +1,202 @@
+@import "variables";
+@import "_mixins";
+
+@import "grid";
+
+@import "header";
+@import "menu-main";
+@import "page-title";
+@import "page-tags";
+@import "page-filter";
+@import "page-search";
+@import "footer";
+
+@import "button-switch";
+@import "select";
+@import "input-text";
+@import "square-img";
+
+@import "MainPage.module";
+@import "poster-page";
+@import "concert-page";
+@import "abonement-page";
+
+@font-face {
+  font-family: 'Polymer-SemiBold';
+  src: url("../fonts/Polymer-SemiBold.otf");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Polymer-Bold';
+  src: url("../fonts/Polymer-Bold.otf");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body{
+  padding: 0;
+  margin: 0;
+
+  background-color: $color-background;
+
+  font-family: $font-family--polymer-semibold;
+  font-size: 18px;
+  line-height: 1em;
+  letter-spacing: 0.015em;
+  color: $color-dark1a;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+}
+a{
+  color: $color-dark1a;
+  text-decoration: underline;
+  &:visited, &:hover{
+    text-decoration: unset;
+  }
+}
+.clearfix{
+  clear: both;
+}
+.ul-nostyle{
+  margin: 0;
+  padding: 0;
+
+  list-style: none;
+  li{
+    margin: 0;
+    padding: 0;
+  }
+}
+.bg-green{
+  background-color: $color-green;
+}
+.bg-purple{
+  background-color: $color-purple;
+}
+.bg-gray40{
+  background-color: $color-gray40;
+}
+.bg-gray26{
+  background-color: $color-dark26;
+}
+.bg-brown{
+  background-color: $color-brown;
+}
+.h1{
+  margin: 0;
+  padding: 0;
+
+  font-family: $font-family--polymer-bold;
+  font-size: $font-size-h1;
+  line-height: 0.5em;
+  letter-spacing: -0.014em;
+}
+.h2{
+  margin: 0;
+  padding: 0;
+
+  font-family: $font-family--polymer-bold;
+  font-size: $font-size-h2;
+  font-weight: unset;
+  line-height: $line-height-h2;
+  letter-spacing: $letter-h2;
+  text-transform: lowercase;
+  @media (max-width: 991px) {
+    font-size: $font-size-h2-mob;
+    line-height: $line-height-h2-mob;
+    letter-spacing: $letter-h2-mob;
+  }
+}
+.h3{
+  margin: 0;
+  padding: 0;
+
+  font-family: $font-family--polymer-bold;
+  font-size: $font-size-h3;
+  font-weight: unset;
+  line-height: $line-height-h3;
+  letter-spacing: $letter-h3;
+  text-transform: lowercase;
+}
+.h4{
+  margin: 0;
+  padding: 0;
+
+  @include font-size-h4;
+  font-weight: unset;
+  a{
+    text-decoration: none;
+  }
+}
+.link{
+  @include link;
+}
+.link_calendar{
+  @media (max-width: 991px) {
+    font-size: 0;
+    width: 84px;
+    height: 84px;
+    background: url("../images/dest/icons/icon-calendar.svg") no-repeat center;
+    background-size: contain;
+    @media (max-width: 656px) {
+      width: 60px;
+      height: 60px;
+    }
+  }
+}
+.link_filter{
+  @media (max-width: 991px) {
+    font-size: 0;
+    width: 84px;
+    height: 84px;
+    background: url("../images/dest/icons/icon-filter.svg") no-repeat center;
+    background-size: contain;
+  }
+  @media (max-width: 656px) {
+    width: 60px;
+    height: 60px;
+  }
+}
+.btn{
+  display: inline-block;
+  padding: 3px 12px 5px;
+  min-width: 200px;
+
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), #1A1A1A;
+  border-radius: 4px;
+
+  @include font-size-24;
+  text-align: center;
+  text-decoration: none;
+  color: $color-lightgray;
+  white-space: nowrap;
+
+  @media (max-width: 991px) {
+    padding: 11px 12px 13px;
+
+    @include font-size-36;
+    white-space: break-spaces;
+  }
+}
+
+.container{
+  max-width: 1280px;
+  padding: 0 20px;
+  margin: 0 auto;
+  @media (max-width: 1320px) {
+    padding: 0;
+    margin: 0 20px;
+  }
+}
+main{
+  min-height: 300px;
+}

@@ -1,0 +1,130 @@
+@import "variables.scss";
+@import "_mixins.scss";
+
+.header{
+  position: relative;
+  background-color: #030A10;
+  @media (max-width: 991px) {
+    padding-top: 96px;
+  }
+  .container{
+    position: absolute;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+  }
+}
+.header__banner{
+  display: block;
+  img{
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+}
+.header__top{
+  position: absolute;
+  top: 46px;
+  left: 20px;
+  right: 20px;
+  @media (max-width: 991px) {
+    top: 22px;
+    left: 0;
+    right: 0;
+  }
+}
+.header__links{
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: flex-end;
+}
+.header__links-search{
+  padding-left: 18px;
+  .icon-search{
+    height: 24px;
+    width: auto;
+    &.icon-search_b{
+      filter: brightness(0) saturate(100%) invert(7%) sepia(5%) saturate(4%) hue-rotate(3deg) brightness(105%) contrast(94%);
+    }
+  }
+}
+.header__links-lang{
+  display: inline;
+  position: relative;
+  border-bottom: 2px solid transparent;
+
+  @include link_w;
+  font-size: $font-size-m;
+  line-height: 1em;
+  letter-spacing: 0.015em;
+  text-decoration: none;
+  &.header__links-lang_b{
+    @include link_b;
+  }
+}
+.header__bottom{
+  position: absolute;
+  bottom: 46px;
+  left: 0;
+  right: 0;
+  @media (max-width: 991px) {
+    display: none;
+  }
+}
+.header__logo{
+  @media (max-width: 991px) {
+    display: none;
+  }
+  img{
+    width: 485px;
+    max-width: 100%;
+    height: auto;
+    @media (max-width: 1320px) {
+      max-width: 80%;
+    }
+  }
+}
+.header__logo_mob{
+  display: none;
+  @media (max-width: 991px) {
+    display: block;
+    flex: 0 0 55%;
+    img{
+      max-width: 312px;
+    }
+  }
+  @media (max-width: 600px) {
+    img{
+      max-width: 100%;
+    }
+  }
+}
+.header__text{
+  color: $color-white;
+  text-align: right;
+  padding-right: 20px;
+}
+//PAGE HEADER
+.page-header__inner{
+  padding: 30px 0 55px 0;
+  @media (max-width: 991px) {
+    align-items: center;
+    padding-top: 22px;
+    padding-bottom: 35px;
+  }
+}
+.header__logo_page{
+  position: relative;
+  bottom: unset;
+  top: -10px;
+  img{
+    height: 60px;
+    width: auto;
+    max-width: 100%;
+  }
+}
+.header__links_page{
+  position: relative;
+  top: unset;
+}

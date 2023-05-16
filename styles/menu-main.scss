@@ -1,0 +1,40 @@
+.menu-main{
+  @media (max-width: 991px) {
+    display: none;
+  }
+  ul{
+    display: flex;
+    grid-gap: 25px;
+  }
+  &.menu-main_page{
+    position: relative;
+    top: unset;
+  }
+}
+.menu-main__item{
+  a{
+    border-bottom: 2px solid transparent;
+
+    @include link_w;
+    @include font-size-28;
+    text-decoration: unset;
+    letter-spacing: 0.022em;
+    text-transform: lowercase;
+  }
+  &.menu-main__item_b{
+    a{
+      @include link_b;
+    }
+  }
+  a.selected{
+    border-bottom: 2px solid $color-dark1a;
+  }
+
+}
+
+//PAGE HEADER
+.menu-main_page{
+  position: relative;
+  top: unset;
+  padding-left: 45px;
+}

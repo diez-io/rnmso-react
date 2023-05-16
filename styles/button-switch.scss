@@ -1,0 +1,118 @@
+@import "variables.scss";
+@import "_mixins.scss";
+
+.switch__container {
+  position: relative;
+  width: 252px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.switch__label {
+  display: block;
+  position: absolute;
+  top: 0;
+  width: 127px;
+  height: 40px;
+  padding-top: 10px;
+  z-index: 5;
+  cursor: pointer;
+  transition: 500ms;
+
+  @include font-size-m;
+  color: $color-dark1a;
+  font-weight: normal;
+  text-align: center;
+}
+.switch__label_left {
+  left: 0;
+}
+.switch__label_right {
+  right: 0;
+}
+.switch__container input {
+  display: none;
+}
+.switch__pill {
+  position: relative;
+  height: 40px;
+  width: 252px;
+  background: $color-lightgray;
+  border-radius: 8px;
+  transition: all 500ms;
+}
+.switch__toggle {
+  position: absolute;
+  width: 127px;
+  height: 40px;
+  background-color: $color-dark1a;
+  left: 0;
+  border-radius: 8px;
+  transition: all 500ms;
+  z-index: 4;
+}
+/*
+Toggle Changes
+*/
+.switch__container input:checked+.switch__label {
+  color: $color-white;
+}
+.switch__container input:checked+.switch__label_left~.switch__toggle {
+  left: 0;
+}
+.switch__container input:checked+.switch__label_right~.switch__toggle {
+  left: 127px;
+}
+
+
+.toggle {
+  cursor: pointer;
+  display: inline-block;
+}
+.toggle__switch {
+  display: inline-block;
+  background: none;
+  border: 2px solid $color-dark1a;
+  box-sizing: border-box;
+  border-radius: 12px;
+  width: 44px;
+  height: 16px;
+  position: relative;
+  vertical-align: middle;
+  transition: background 500ms;
+}
+.toggle__switch:before, .toggle__switch:after {
+  content: "";
+}
+.toggle__switch:before {
+  display: block;
+  background: $color-dark1a;
+  border-radius: 50%;
+  width: 10px;
+  height: 10px;
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  transition: left 500ms;
+}
+.toggle__checkbox:checked + .toggle__switch {
+  background: $color-dark1a;
+}
+.toggle__checkbox:checked + .toggle__switch:before {
+  left: 29px;
+  background: $color-white;
+}
+
+.toggle__checkbox {
+  position: absolute;
+  visibility: hidden;
+}
+
+.toggle__label {
+  margin-left: 14px;
+  position: relative;
+  top: 2px;
+
+  @include font-size-28;
+  text-transform: lowercase;
+}

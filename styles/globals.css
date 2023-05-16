@@ -1,0 +1,44 @@
+@font-face {
+  font-family: 'Polymer-SemiBold';
+  src: url("../fonts/Polymer-SemiBold.otf");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Polymer-Bold';
+  src: url("../fonts/Polymer-Bold.otf");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+a {
+  color: #1A1A1A;
+  text-decoration: underline;
+}
+a:visited, a:hover{
+  text-decoration: unset;
+}
+body{
+  padding: 0;
+  margin: 0;
+
+  background-color: #EFEFEF;
+
+  font-family: "Polymer-SemiBold", Arial, serif;
+  font-size: 18px;
+  line-height: 1em;
+  letter-spacing: 0.015em;
+  color: #1A1A1A;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+}
+main{
+  min-height: 300px;
+}

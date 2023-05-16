@@ -1,0 +1,17 @@
+.page-search{
+  @include section-line-bottom;
+  &:before{
+    content: "";
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 26px;
+
+    background: url("../public/images/dest/icons/search-icon.svg") no-repeat left center;
+    background-size: contain;
+    filter: brightness(0) saturate(100%) invert(7%) sepia(5%) saturate(4%) hue-rotate(3deg) brightness(105%) contrast(94%);
+    opacity: 0.5;
+  }
+}

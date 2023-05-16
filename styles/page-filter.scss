@@ -1,0 +1,28 @@
+.page-filter{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 40px;
+
+  padding: 5px 0 20px 0;
+
+  @media (max-width: 991px) {
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .switch__container{
+    @media (max-width: 991px) {
+      flex: 0 0 100%;
+    }
+  }
+}
+.page-filter__grid{
+  gap: 20px;
+  flex-wrap: nowrap;
+  @media (max-width: 991px) {
+    &:first-child {
+      flex: 0 0 100%;
+    }
+  }
+}

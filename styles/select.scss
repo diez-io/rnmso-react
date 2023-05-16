@@ -1,0 +1,25 @@
+.select__container {
+  position: relative;
+  width: auto;
+  overflow:hidden;
+
+  background: url("../public/images/dest/icons/select-pointer.svg") no-repeat 100% 15px;
+  background-size: 16px 8px;
+}
+
+.select__container select {
+  display: block;
+  width: 100%;
+  padding: 0;
+  background: none;
+  border: none;
+  -webkit-appearance: none;
+  appearance: none;
+
+  @include font-size-28;
+  text-transform: lowercase;
+}
+
+.select__container select:focus {
+  outline: 0;
+}

@@ -1,0 +1,117 @@
+// Colors
+//---------------------------------
+
+// Default
+
+$color-default-black:             #000000;
+$color-default-white:             #ffffff;
+$color-default-gray:              #f7f7f7;
+$color-transparent:               rgba(255, 255, 255, 0);
+
+// Base
+
+$color-background:                #EFEFEF;
+$color-white:                     #E5E5EE;
+$color-green:                     #678E80;
+$color-lightgreen:                #B1DBBD;
+$color-dark1a:                    #1A1A1A;
+$color-dark26:                    #262626;
+$color-gray40:                    #404040;
+$color-lightgray:                 #E5E5E5;
+$color-purple:                    #726899;
+$color-brown:                     #B6946A;
+$color-pink:                      #D98D8D;
+
+// Font
+
+$font-size-xs:                    16px;
+
+$font-size-20:                    20px;
+$line-height-20:                  24px;
+$letter-20:                       0.016em;
+
+$font-size-m:                     22.7px;
+$line-height-m:                   24px;
+$letter-m:                        -0.015em;
+
+$font-size-22:                    22px;
+$line-height-22:                  24px;
+$letter-22:                       0.01em;
+
+$font-size-28:                    28px;
+$line-height-28:                  32px;
+$letter-28:                       -0.016em;
+
+$font-size-36:                    36px;
+$line-height-36:                  36px;
+$letter-36:                       0.01em;
+
+$font-size-64:                    64px;
+$line-height-64:                  48px;
+$letter-64:                       -0.024em;
+
+$font-size-91:                    91px;
+$line-height-91:                  63px;
+$letter-91:                       -0.06em;
+
+$font-size-h1:                    64.9px;
+
+$font-size-h2:                    117px;
+$line-height-h2:                  96px;
+$letter-h2:                       -0.048em;
+
+$font-size-h2-mob:                86px;
+$line-height-h2-mob:              64px;
+$letter-h2-mob:                   -0.035em;
+
+$font-size-h3:                    48px;
+$line-height-h3:                  36px;
+$letter-h3:                       -0.014em;
+
+$font-size-h4:                    40px;
+$line-height-h4:                  36px;
+$letter-h4:                       -0.004em;
+
+$font-size-24:                    24px;
+$line-height-24:                  28px;
+$letter-24:                       0.01em;
+
+$font-size-num:                   76.9px;
+$line-height-num:                 64px;
+$letter-num:                      -0.035em;
+
+$font-size-85:                   85.7px;
+$line-height-85:                 64px;
+$letter-85:                      -0.024em;
+
+
+
+// Typography
+//---------------------------------
+
+$font-family--polymer-semibold:     'Polymer-SemiBold', Arial, sans-serif;
+$font-family--polymer-bold:         'Polymer-Bold', Arial, sans-serif;
+
+// Animation
+//---------------------------------
+
+$default-transition-settings:       0.3s ease;
+$modal-transition-settings:         0.6s cubic-bezier(0.55, 0, 0.1, 1);
+
+// Viewports
+//---------------------------------
+
+$viewport--sm:                      320px;
+$viewport--md:                      768px;
+$viewport--lg:                      1024px;
+$viewport--xl:                      1440px;
+$viewport--xxl:                     1920px;
+
+
+// Retina
+//---------------------------------
+
+$retina-dpi:                        144dpi;
+$retina-dppx:                       1.5dppx;
+
+

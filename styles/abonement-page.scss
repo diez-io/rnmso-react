@@ -1,0 +1,118 @@
+.page-abonement{
+  margin-bottom: 15px;
+  @media (max-width: 991px) {
+    margin-top: 40px;
+  }
+}
+.abonement-section{
+  padding: 43px 0 39px 0;
+  &:not(:last-child){
+    @include section-line-bottom;
+  }
+  @media (max-width: 991px) {
+    padding: 32px 0;
+  }
+}
+.abonement-section_disabled{
+  opacity: 0.6;
+}
+.abonement-section_separate{
+  display: flex;
+  justify-content: flex-start;
+  align-items: start;
+  gap: 8px;
+  flex-wrap: nowrap;
+  @media (max-width: 991px) {
+    gap: 0;
+    flex-wrap: wrap;
+    position: relative;
+  }
+}
+.abonement-section__column:first-child{
+  flex: 0 0 200px;
+}
+.abonement-section__column:nth-child(2){
+  padding-right: 30px;
+  @media (max-width: 991px) {
+    padding-right: 0;
+  }
+}
+.abonement-section__column:nth-child(3){
+  flex: 0 0 200px;
+}
+.abonement-section__title{
+  @media (max-width: 991px) {
+    padding-top: 15px;
+  }
+  p{
+    @include m0p0;
+    line-height: 20px;
+    margin-top: 10px;
+    margin-bottom: 17px;
+    @media (max-width: 991px) {
+      margin-top: 6px;
+      @include font-size-24;
+    }
+  }
+}
+.abonement-section__item{
+  &:not(:last-child){
+    padding-bottom: 22px;
+  }
+}
+.abonement-section__num{
+  display: block;
+
+  font-family: $font-family--polymer-semibold;
+  @include font-size-num;
+  text-transform: lowercase;
+  @media (max-width: 991px) {
+    @include font-size-85;
+  }
+}
+.abonement-section__date{
+  display: block;
+
+  @include font-size-m;
+  @media (max-width: 991px) {
+    @include font-size-28;
+  }
+}
+.abonement-section__text{
+  line-height: 20px;
+  p{
+    @include m0p0;
+    @include font-size-m;
+    @media (max-width: 991px) {
+      @include font-size-28;
+    }
+  }
+  picture{
+    display: block;
+    width: 356px;
+    height: 192px;
+    margin-top: 10px;
+    @media (max-width: 991px) {
+      height: 332px;
+      width: 100%;
+      margin-top: 17px;
+    }
+    img{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+  }
+}
+.abonement-section__actions{
+  @media (max-width: 991px) {
+    position: absolute;
+    top: -5px;
+    right: 0;
+    max-width: calc(100% - 220px);
+  }
+  span{
+    @include font-size-24;
+  }
+}
