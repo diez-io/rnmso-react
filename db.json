@@ -102,7 +102,7 @@
       "date": "18.02.2022",
       "place": "Концертный зал имени П. И. Чайковского",
       "image": "/images/dest/content/main/video1.png",
-      "url": "https://www.youtube.com/watch?v=ysz5S6PUM-U"
+      "url": "https://www.youtube.com/watch?v=arj7oStGLkU"
     },
     {
       "id": "2",
@@ -235,6 +235,7 @@
       "posts": [
         {
           "id": "1",
+          "slug": "slug3",
           "title": "Концерт в Хабаровской филармонии",
           "date_num": "7",
           "date_text": "Понедельник 19:00",
@@ -245,6 +246,7 @@
         },
         {
           "id": "2",
+          "slug": "slug4",
           "title": "Концерт в Хабаровской филармонии",
           "date_num": "20",
           "date_text": "Воскресенье 19:00",
@@ -260,6 +262,7 @@
       "posts": [
         {
           "id": "3",
+          "slug": "slug1",
           "title": "Концерт в Хабаровской филармонии",
           "date_num": "7",
           "date_text": "Понедельник 19:00",
@@ -270,6 +273,7 @@
         },
         {
           "id": "4",
+          "slug": "slug1",
           "title": "Концерт в Хабаровской филармонии",
           "date_num": "20",
           "date_text": "Воскресенье 19:00",
@@ -280,6 +284,7 @@
         },
         {
           "id": "5",
+          "slug": "slug3",
           "title": "Концерт в Хабаровской филармонии",
           "date_num": "20",
           "date_text": "Воскресенье 19:00",
@@ -289,6 +294,43 @@
           "image": "/images/dest/content/main/afisha3.png"
         }
       ]
+    }
+  ],
+  "posterTags": [
+    {
+      "id": 1,
+      "slug": "slug1",
+      "title": "80 лет Чайковскому"
+    },
+    {
+      "id": 2,
+      "slug": "slug2",
+      "title": "Урюпин"
+    },
+    {
+      "id": 3,
+      "slug": "slug3",
+      "title": "Франкфурт"
+    },
+    {
+      "id": 4,
+      "slug": "slug4",
+      "title": "Опера"
+    },
+    {
+      "id": 5,
+      "slug": "slug5",
+      "title": "Новая музыка"
+    },
+    {
+      "id": 6,
+      "slug": "slug6",
+      "title": "Концерты в Москве"
+    },
+    {
+      "id": 7,
+      "slug": "slug7",
+      "title": "2022"
     }
   ]
 }

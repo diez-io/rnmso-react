@@ -1,11 +1,11 @@
 /** @type {import('next').NextConfig} */
 const path = require('path');
-require('dotenv').config()
+require('dotenv').config();
 
 const nextConfig = {
-  //output: 'export',
+  // output: 'export',
   env: {
-    API_URL: process.env.API_URL
+    API_URL: process.env.API_URL,
   },
   reactStrictMode: true,
   sassOptions: {
@@ -15,7 +15,7 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-  staticPageGenerationTimeout: 1000
-}
+  staticPageGenerationTimeout: 1000,
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;
