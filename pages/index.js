@@ -2,8 +2,8 @@ import Link from 'next/link';
 import { useState } from 'react';
 import Image from 'next/image';
 import classNames from 'classnames/bind';
-import { MainLayout } from '../components/MainLayout';
-import Player from '../components/Player';
+import { MainLayout } from '@/components/MainLayout';
+import Player from '@/components/Player';
 
 import {
   loadAfisha,
@@ -15,8 +15,8 @@ import {
   loadPhotoSlider,
 } from '@/lib/loadMainPosts';
 
-import styles from '../styles/Main.module.scss';
-import stylesMainPage from '../styles/MainPage.module.scss';
+import styles from '@/styles/Main.module.scss';
+import stylesMainPage from '@/styles/MainPage.module.scss';
 
 const cx = classNames.bind(styles);
 const cxMain = classNames.bind(stylesMainPage);
@@ -52,30 +52,30 @@ export default function Main({
           cxMain('section-main', 'section-main__poster')
         )}
       >
-        <div className={cx('container')}>
-          <h2 className={cx('h2')}>Афиша</h2>
+        <div className="container">
+          <h2 className="h2">Афиша</h2>
           <Afisha posts={afisha} />
           <Link href="/calendar" className={cxMain('link-main__all')}>
             все концерты
           </Link>
-          <div className={cx('clearfix')} />
+          <div className="clearfix" />
         </div>
       </section>
 
       <section className={cxMain('section-main', 'section-main__orchestra')}>
-        <div className={cx('container')}>
-          <h2 className={cx('h2')}>Оркестр</h2>
+        <div className="container">
+          <h2 className="h2">Оркестр</h2>
           <Orchestra posts={orchestra} />
           <Link className={cxMain('link-main__all')} href="#">
             состав оркестра
           </Link>
-          <div className={cx('clearfix')} />
+          <div className="clearfix" />
         </div>
       </section>
 
       <section className={cxMain('section-main', 'section-main__masters')}>
-        <div className={cx('container')}>
-          <h2 className={cx('h2')}>Мэтры об оркестре</h2>
+        <div className="container">
+          <h2 className="h2">Мэтры об оркестре</h2>
           <Masters posts={masters} />
         </div>
       </section>
@@ -86,13 +86,13 @@ export default function Main({
           cxMain('section-main', 'section-main__news')
         )}
       >
-        <div className={cx('container')}>
-          <h2 className={cx('h2')}>Новости</h2>
+        <div className="container">
+          <h2 className="h2">Новости</h2>
           <News posts={news} />
           <Link className={cxMain('link-main__all')} href="#">
             все новости
           </Link>
-          <div className={cx('clearfix')} />
+          <div className="clearfix" />
         </div>
       </section>
 
@@ -102,8 +102,8 @@ export default function Main({
           cxMain('section-main', 'section-main__video')
         )}
       >
-        <div className={cx('container')}>
-          <h2 className={cx('h2')}>Видео</h2>
+        <div className="container">
+          <h2 className="h2">Видео</h2>
           <Video posts={video} />
         </div>
       </section>
@@ -114,12 +114,12 @@ export default function Main({
           cxMain('section-main', 'section-main__photo')
         )}
       >
-        <div className={cx('container')}>
-          <h2 className={cx('h2')}>Процесс</h2>
+        <div className="container">
+          <h2 className="h2">Процесс</h2>
           <Photo posts={photo} />
         </div>
         <PhotoSlider posts={photoSlider} />
-        <div className={cx('container')}>
+        <div className="container">
           <a className={cxMain('link-main__all')} href="#">
             все фотографии
           </a>
@@ -155,8 +155,8 @@ function Afisha({ posts }) {
               </p>
             </div>
             <div className={cxMain('poster-article__text')}>
-              <h4 className={cx('h4')}>
-                <Link className={cx('link')} href="#">
+              <h4 className="h4">
+                <Link className="link" href="#">
                   {post.title}
                 </Link>
               </h4>
@@ -257,8 +257,8 @@ function News({ posts }) {
       {posts.map((post) => (
         <article key={`news_${post.id}`} className={cxMain('news-article')}>
           <span>{post.date}</span>
-          <h4 className={cx('h4')}>
-            <Link className={cx('link')} href="#">
+          <h4 className="h4">
+            <Link className="link" href="#">
               {post.title}
             </Link>
           </h4>
@@ -294,8 +294,8 @@ function Video({ posts }) {
           <p>
             {posts[0].date} · {posts[0].place}
           </p>
-          <h4 className={cx('h4')}>
-            <Link className={cx('link')} href="#">
+          <h4 className="h4">
+            <Link className="link" href="#">
               {posts[0].title}
             </Link>
           </h4>
@@ -332,8 +332,8 @@ function Video({ posts }) {
                   <p>
                     {post.date} · {post.place}
                   </p>
-                  <h4 className={cx('h4')}>
-                    <Link className={cx('link')} href="#">
+                  <h4 className="h4">
+                    <Link className="link" href="#">
                       {post.title}
                     </Link>
                   </h4>
@@ -357,8 +357,8 @@ function Photo({ posts }) {
           <Image width={200} height={200} src={posts[0].image} alt="" />
         </picture>
         <div className={cxMain('photo-article__text')}>
-          <h4 className={cx('h4')}>
-            <Link className={cx('link')} href="#">
+          <h4 className="h4">
+            <Link className="link" href="#">
               {posts[0].title}
             </Link>
           </h4>
@@ -380,8 +380,8 @@ function Photo({ posts }) {
                   <Image width={200} height={200} src={post.image} alt="" />
                 </picture>
                 <div className={cxMain('photo-article__text')}>
-                  <h4 className={cx('h4')}>
-                    <Link className={cx('link')} href="#">
+                  <h4 className="h4">
+                    <Link className="link" href="#">
                       {post.title}
                     </Link>
                   </h4>
@@ -406,7 +406,7 @@ function PhotoSlider({ posts }) {
             <Image width={200} height={200} src={post.image} alt="" />
           </picture>
           <div className={cxMain('photo-slider-article__text')}>
-            <Link className={cx('link')} href="#">
+            <Link className="link" href="#">
               {post.title}
             </Link>
             <p>{post.count}</p>

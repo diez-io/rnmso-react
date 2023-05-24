@@ -7,7 +7,7 @@ const cx = classNames.bind(styles);
 export default function Footer() {
   return (
     <footer className={cx('footer', 'bg-gray26')}>
-      <div className={cx('container')}>
+      <div className="container">
         <div className={cx('footer-columns')}>
           <div className={cx('footer-column')}>
             <h2 className={cx('footer__main-title')}>
@@ -100,15 +100,15 @@ export default function Footer() {
         </div>
         <div className={cx('footer-bottom')}>
           <div className={cx('footer-bottom__links')}>
-            <a href="#">
-              <img src="images/dest/logo-small-w.svg" alt="" />
-            </a>
-            <a href="#">
-              <img src="images/dest/logo-footer-1.svg" alt="" />
-            </a>
-            <a href="#">
-              <img src="images/dest/logo-footer-2.svg" alt="" />
-            </a>
+            <Link href="#">
+              <img src="/images/dest/logo-small-w.svg" alt="" />
+            </Link>
+            <Link href="#">
+              <img src="/images/dest/logo-footer-1.svg" alt="" />
+            </Link>
+            <Link href="#">
+              <img src="/images/dest/logo-footer-2.svg" alt="" />
+            </Link>
           </div>
           <div className={cx('footer-bottom__copyright')}>
             © Российский национальный молодежный симфонический оркестр

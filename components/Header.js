@@ -1,26 +1,34 @@
 import Link from 'next/link';
 import classNames from 'classnames/bind';
-import styles from '../styles/Main.module.scss';
+import Image from 'next/image';
+import styles from '@/styles/Main.module.scss';
+import stylesHeader from '@/styles/Header.module.scss';
 
 const cx = classNames.bind(styles);
+const cxHeader = classNames.bind(stylesHeader);
 
 export default function Header() {
   return (
-    <header className={cx('header')}>
-      <picture className={cx('header__banner')}>
+    <header className={cxHeader('header')}>
+      <picture className={cxHeader('header__banner')}>
         <source
-          srcSet="images/dest/main/banner-main-mob.png"
+          srcSet="/images/dest/main/banner-main-mob.png"
           media="(max-width: 991px)"
         />
-        <img src="images/dest/main/banner-main.png" alt="" />
+        <img src="/images/dest/main/banner-main.png" alt="" />
       </picture>
-      <div className={cx('container')}>
-        <div className={cx('d-flex', 'align-center', 'header__top')}>
-          <div className={cx('header__logo', 'header__logo_mob')}>
-            <img src="images/dest/logo.svg" alt="" />
+      <div className={`container ${cxHeader('container_header')}`}>
+        <div
+          className={classNames(
+            cx('d-flex', 'align-center'),
+            cxHeader('header__top')
+          )}
+        >
+          <div className={cxHeader('header__logo', 'header__logo_mob')}>
+            <Image src="images/dest/logo.svg" width="485" height="78" alt="" />
           </div>
           <nav className={cx('menu-main')}>
-            <ul className={cx('ul-nostyle')}>
+            <ul className="ul-nostyle">
               <li className={cx('menu-main__item')}>
                 <Link href="#">оркестр</Link>
               </li>
@@ -38,23 +46,34 @@ export default function Header() {
               </li>
             </ul>
           </nav>
-          <div className={cx('header__links')}>
-            <a className={cx('header__links-lang')} href="#">
+          <div className={cxHeader('header__links')}>
+            <a className={cxHeader('header__links-lang')} href="#">
               Eng
             </a>
-            <a className={styles['header__links-search']} href="#">
-              <img
-                className={styles['icon-search']}
+            <a className={cxHeader('header__links-search')} href="#">
+              <Image
+                height="25"
+                width="24"
+                className={cx('icon-search')}
                 src="images/dest/icons/search-icon.svg"
               />
             </a>
           </div>
         </div>
-        <div className={cx('d-flex', 'align-end', 'grid-6', 'header__bottom')}>
-          <div className={cx('grid__inner', 'header__logo')}>
-            <img src="images/dest/logo.svg" alt="" />
+        <div
+          className={classNames(
+            cx('d-flex', 'align-end', 'grid-6'),
+            cxHeader('header__bottom')
+          )}
+        >
+          <div
+            className={classNames(cx('grid__inner'), cxHeader('header__logo'))}
+          >
+            <Image src="images/dest/logo.svg" width="485" height="78" alt="" />
           </div>
-          <div className={cx('grid__inner', 'header__text')}>
+          <div
+            className={classNames(cx('grid__inner'), cxHeader('header__text'))}
+          >
             Российский национальный молодежный симфонический оркестр
           </div>
         </div>

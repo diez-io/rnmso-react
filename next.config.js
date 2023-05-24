@@ -10,7 +10,7 @@ const nextConfig = {
   reactStrictMode: true,
   sassOptions: {
     includePaths: [path.join(__dirname, 'styles')],
-    prependData: `@import "variables.scss"; @import "_mixins.scss";`,
+    additionalData: `@import "styles/variables.scss"; @import "styles/_mixins.scss";`,
   },
   images: {
     unoptimized: true,

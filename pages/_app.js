@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import NextNProgress from 'nextjs-progressbar';
 import 'react-responsive-modal/styles.css';
-import '@/styles/globals.css';
+import '@/styles/globals.scss';
 import InnerLayout from '../components/InnerLayout';
 
 export default function App({ Component, pageProps }) {

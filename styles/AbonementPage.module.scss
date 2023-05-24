@@ -19,7 +19,7 @@
 .abonement-section_separate{
   display: flex;
   justify-content: flex-start;
-  align-items: start;
+  align-items: flex-start;
   gap: 8px;
   flex-wrap: nowrap;
   @media (max-width: 991px) {
@@ -79,14 +79,6 @@
   }
 }
 .abonement-section__text{
-  line-height: 20px;
-  p{
-    @include m0p0;
-    @include font-size-m;
-    @media (max-width: 991px) {
-      @include font-size-28;
-    }
-  }
   picture{
     display: block;
     width: 356px;
@@ -103,6 +95,16 @@
       object-fit: cover;
       object-position: center;
     }
+  }
+}
+.abonement-section__desc{
+  line-height: 20px;
+  @include font-size-m;
+  @media (max-width: 991px) {
+    @include font-size-28;
+  }
+  p{
+    @include m0p0;
   }
 }
 .abonement-section__actions{
