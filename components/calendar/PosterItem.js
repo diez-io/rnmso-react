@@ -42,7 +42,7 @@ export default function PosterItem({ post }) {
         <span>{post.abonement}</span>
       </div>
       <div className={cxAfisha('poster-section__actions')}>
-        <a href="#" className={cx('btn')}>
+        <a href="#" className='btn'>
           купить абонемент
         </a>
       </div>

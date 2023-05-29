@@ -1,4 +1,4 @@
-local server http://s.rnmso-dev.ru
+local server http://localhost:4200
 
 ## Getting Started
 ```bash

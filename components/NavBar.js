@@ -6,7 +6,7 @@ import styles from '@/styles/MenuMain.module.scss';
 
 const cxMenu = classNames.bind(styles);
 
-const navigationRoutes = {"orchestra": "оркестр", "calendar":"афиша", "competition":"конкурс", "photovideo": "фото и видео", "info":"информация"};
+const navigationRoutes = {"orchestra": "оркестр", "calendar":"афиша", "competition":"конкурс", "video": "медиа", "info":"информация"};
 
 export default function NavBar() {
   const router = useRouter();

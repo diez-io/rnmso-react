@@ -2,10 +2,12 @@ import Link from 'next/link';
 import classNames from 'classnames/bind';
 import Image from 'next/image';
 import styles from '@/styles/Main.module.scss';
+import stylesMenu from '@/styles/MenuMain.module.scss';
 import stylesHeader from '@/styles/Header.module.scss';
 
 const cx = classNames.bind(styles);
 const cxHeader = classNames.bind(stylesHeader);
+const cxMenu = classNames.bind(stylesMenu);
 
 export default function Header() {
   return (
@@ -27,21 +29,21 @@ export default function Header() {
           <div className={cxHeader('header__logo', 'header__logo_mob')}>
             <Image src="images/dest/logo.svg" width="485" height="78" alt="" />
           </div>
-          <nav className={cx('menu-main')}>
+          <nav className={cxMenu('menu-main')}>
             <ul className="ul-nostyle">
-              <li className={cx('menu-main__item')}>
+              <li className={cxMenu('menu-main__item')}>
                 <Link href="#">оркестр</Link>
               </li>
-              <li className={cx('menu-main__item')}>
+              <li className={cxMenu('menu-main__item')}>
                 <Link href="/calendar">афиша</Link>
               </li>
-              <li className={cx('menu-main__item')}>
+              <li className={cxMenu('menu-main__item')}>
                 <Link href="#">конкурс</Link>
               </li>
-              <li className={cx('menu-main__item')}>
-                <Link href="#">фото и видео</Link>
+              <li className={cxMenu('menu-main__item')}>
+                <Link href="/video">медиа</Link>
               </li>
-              <li className={cx('menu-main__item')}>
+              <li className={cxMenu('menu-main__item')}>
                 <Link href="#">информация</Link>
               </li>
             </ul>
