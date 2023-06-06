@@ -7,8 +7,8 @@ import {
   loadReccomendedAfishaPosts,
 } from '@/lib/loadAfishaPage';
 import styles from '@/styles/Main.module.scss';
-import stylesAfishaPage from '@/styles/AfishaPage.module.scss';
-import stylesConcertPage from '@/styles/ConcertPage.module.scss';
+import stylesAfishaPage from '@/styles/PageAfisha.module.scss';
+import stylesConcertPage from '@/styles/PageConcert.module.scss';
 import PhotoCarousel from '@/components/PhotoCarousel';
 import PosterItem from '@/components/calendar/PosterItem';
 import AbonementsAfisha from '@/components/abonement/AbonementsAfisha';
@@ -30,7 +30,7 @@ export async function getStaticProps({ params }) {
   const abonement = await loadAbonementPost(postData[0].abonementId);
   return {
     props: {
-      bodyClass: cx('bg-green'),
+      bodyClass: 'bg-green',
       postData,
       recommendedPosts,
       abonement,
@@ -44,7 +44,7 @@ export default function CalendarPost({
 }) {
   const data = postData[0];
   return (
-    <div className={cx('container')}>
+    <div className="container">
       <section className={cxConcert('page-concert')}>
         <div className={classNames(cx('d-flex'), cxConcert('concert-section'))}>
           <div
@@ -63,12 +63,12 @@ export default function CalendarPost({
           >
             <div className={cxConcert('concert-section__title')}>
               <p> {data.date}</p>
-              <h4 className={cx('h4')}>{data.title}</h4>
+              <h4 className="h4">{data.title}</h4>
               <span>{data.place}</span>
             </div>
             <MobPhoto items={data.slider} />
             <div className={cxConcert('concert-section__links')}>
-              <Link className={cx('btn')} href="#">
+              <Link className="btn" href="#">
                 билеты
               </Link>
             </div>
@@ -81,7 +81,7 @@ export default function CalendarPost({
 
         <div className={classNames(cx('d-flex'), cxConcert('concert-section'))}>
           <div className={cx('grid__inner', 'grid__inner_25')}>
-            <h4 className={cx('h4')}>о концерте</h4>
+            <h4 className="h4">о концерте</h4>
           </div>
           <div className={cx('grid__inner', 'grid__inner_75')}>
             <div

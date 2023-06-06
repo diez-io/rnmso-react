@@ -1,11 +1,11 @@
 import classNames from 'classnames/bind';
 import Link from 'next/link';
 import { useState } from 'react';
-import styles from '@/styles/Main.module.scss';
-import stylesAfishaPage from '@/styles/AfishaPage.module.scss';
+import stylesAfishaPage from '@/styles/PageAfisha.module.scss';
 import { loadAfishaTags, getAfishaPosts } from '@/lib/loadAfishaPage';
 import Tags from '@/components/Tags';
 import PosterSection from '@/components/calendar/PosterSection';
+import styles from '@/styles/Main.module.scss';
 
 const cx = classNames.bind(styles);
 const cxAfisha = classNames.bind(stylesAfishaPage);
@@ -15,7 +15,7 @@ export async function getStaticProps() {
   const tags = await loadAfishaTags();
   return {
     props: {
-      bodyClass: cx('bg-green'),
+      bodyClass: 'bg-green',
       afishaPosts,
       tags,
     },
@@ -37,9 +37,9 @@ export default function Calendar({ afishaPosts, tags }) {
   };
   return (
     <div className="container">
-      <section className="page-title">
+      <section className={cx("page-title")}>
         <h1 className="h1">Афиша</h1>
-        <div className="page-title__links">
+        <div className={cx("page-title__links")}>
           <Link className="link" href="/abonement">
             Абонементы
           </Link>

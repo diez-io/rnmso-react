@@ -1,0 +1,26 @@
+@import "video-articles";
+
+.page-videos{
+  padding-bottom: 50px;
+}
+.video-article:not(.video-article_first){
+  .video-article__text {
+    h4 {
+      font-size: 32px;
+    }
+  }
+}
+.video-article_first{
+  .video-article__text{
+    margin-top: 115px;
+    @media (max-width: 1200px) {
+      margin-top: 0;
+    }
+    @media (max-width: 991px) {
+      margin-top: 14px;
+    }
+  }
+  @media (min-width: 992px) and (max-width: 1200px) {
+    align-items: center;
+  }
+}

@@ -6,23 +6,22 @@ import styles from '@/styles/MenuMain.module.scss';
 
 const cxMenu = classNames.bind(styles);
 
-const navigationRoutes = {"orchestra": "оркестр", "calendar":"афиша", "competition":"конкурс", "video": "медиа", "info":"информация"};
+const navigationRoutes = {
+  orchestra: 'оркестр',
+  calendar: 'афиша',
+  competition: 'конкурс',
+  video: 'медиа',
+  info: 'информация',
+};
 
-export default function NavBar() {
+export default function NavBar({isInner}) {
   const router = useRouter();
-
   return (
-    <nav className={cxMenu('menu-main', 'menu-main_page')}>
+    <nav className={cxMenu('menu-main', isInner && 'menu-main_page')}>
       <ul className="ul-nostyle">
-        {Object.entries(navigationRoutes).map(([key, value]) =>(
-            <NavLink
-                key={key}
-                href={`/${key}`}
-                text={value}
-                router={router}
-            />
+        {Object.entries(navigationRoutes).map(([key, value]) => (
+          <NavLink key={key} href={`/${key}`} text={value} router={router} />
         ))}
-
       </ul>
     </nav>
   );
@@ -31,8 +30,13 @@ export default function NavBar() {
 function NavLink({ href, text, router }) {
   const isActive = router.pathname.includes(href);
   return (
-      <li className={cxMenu('menu-main__item', 'menu-main__item_b', isActive && "selected")}>
-        <Link href={href}>{text}</Link>
-      </li>
+    <li
+      className={cxMenu(
+        'menu-main__item',
+        isActive && 'selected'
+      )}
+    >
+      <Link href={href}>{text}</Link>
+    </li>
   );
 }

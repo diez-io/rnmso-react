@@ -1,0 +1,24 @@
+@import "photo-articles";
+.page-photos{
+  padding-bottom: 50px;
+}
+.photo-article_first{
+  margin-top: 0;
+}
+@media (min-width: 991px) {
+  .photo-article {
+    order: 3;
+  }
+  .photo-article_first {
+    margin-top: 36px;
+    order: 2;
+  }
+  .photo-article:nth-child(2) {
+    margin-top: 0;
+    order: 0;
+  }
+  .photo-article:nth-child(3) {
+    margin-top: 0;
+    order: 1;
+  }
+}

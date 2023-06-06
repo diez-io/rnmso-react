@@ -1,7 +1,7 @@
 import classNames from 'classnames/bind';
 import Link from 'next/link';
 import styles from '@/styles/Main.module.scss';
-import stylesConcertPage from '@/styles/ConcertPage.module.scss';
+import stylesConcertPage from '@/styles/PageConcert.module.scss';
 
 const cx = classNames.bind(styles);
 const cxConcert = classNames.bind(stylesConcertPage);

@@ -1,7 +1,3 @@
-@import "page-title";
-@import "page-filter";
-@import "page-search";
-
 @font-face {
   font-family: 'Polymer-SemiBold';
   src: url("../public/assets/fonts/Polymer-SemiBold.otf");
@@ -31,18 +27,18 @@ body{
   padding: 0;
   margin: 0;
 
-  background-color: #EFEFEF;
+  background-color: $color-background;
 
   font-family: "Polymer-SemiBold", Arial, serif;
   font-size: 18px;
   line-height: 1em;
   letter-spacing: 0.015em;
-  color: #1A1A1A;
+  color: $color-dark1a;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-
 }
+
 .clearfix{
   clear: both;
 }
@@ -64,6 +60,7 @@ body{
   font-size: $font-size-h1;
   line-height: 0.5em;
   letter-spacing: -0.014em;
+  font-weight: 400;
 }
 .h2{
   margin: 0;
@@ -152,6 +149,59 @@ body{
     white-space: break-spaces;
   }
 }
+.bg-white{
+  background-color: $color-background;
+}
+.bg-green{
+  background-color: $color-green;
+}
+.bg-purple{
+  background-color: $color-purple;
+}
+.bg-gray40{
+  background-color: $color-gray40;
+}
+.bg-gray26{
+  background-color: $color-dark26;
+}
+.bg-brown{
+  background-color: $color-brown;
+}
+//light fonts
+.bg-gray40{
+  color: $color-white;
+  main .link, header .link{
+    @include link_w;
+  }
+  nav {
+    a {
+      @include link_w;
+    }
+  }
+  .main-title{
+    a{
+      color: $color-white;
+      &:before{
+        filter: brightness(0) saturate(100%) invert(7%) sepia(5%) saturate(4%) hue-rotate(3deg) brightness(105%) contrast(94%);
+      }
+    }
+  }
+}
+//dark fonts
+.bg-green, .bg-white, .bg-brown{
+  color: $color-dark1a;
+  main .link, header .link{
+    @include link_b;
+  }
+  nav {
+    a {
+      @include link_b;
+    }
+  }
+  .svg_color{
+    filter: brightness(0) saturate(100%) invert(7%) sepia(5%) saturate(4%) hue-rotate(3deg) brightness(105%) contrast(94%);
+  }
+}
 
 .container{
   max-width: 1280px;
@@ -173,7 +223,7 @@ main{
   overflow: unset;
 }
 .customOverlay{
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 1)!important;
 }
 .customCloseButton{
   top: 5px;
@@ -202,6 +252,26 @@ main{
     max-width: calc(100vw - 10px);
     margin: 5px;
   }
+}
+.lg-backdrop{
+  background: rgba(0, 0, 0, 1)!important;
+}
+.lg-toolbar {
+  .lg-icon{
+    color: $color-lightgray!important;
+  }
+  .lg-download{
+    display: none;
+  }
+  .lg-close:after {
+
+  }
+}
+.lg-counter{
+  color: $color-lightgray!important;
+}
+.lg-next:not(.disabled), .lg-prev:not(.disabled){
+  color: $color-lightgray!important;
 }
 /*PHOTO GALLERY*/
 .gallery .carousel {

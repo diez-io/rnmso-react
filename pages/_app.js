@@ -9,7 +9,7 @@ export default function App({ Component, pageProps }) {
     document.body.className = pageProps.bodyClass ? pageProps.bodyClass : '';
   });
   const getLayout =
-    Component.getLayout || ((page) => <InnerLayout>{page}</InnerLayout>);
+    Component.getLayout || ((page) => <InnerLayout fontsColor={pageProps.fontsColor}>{page}</InnerLayout>);
   return getLayout(
     <>
       <NextNProgress color="#1A1A1A" />

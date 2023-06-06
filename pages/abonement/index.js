@@ -1,15 +1,17 @@
 import classNames from 'classnames/bind';
 import styles from '@/styles/Main.module.scss';
 import AbonementItem from '@/components/abonement/AbonementItem';
-import { loadAbonementPosts } from '@/lib/loadAfishaPage';
+import { loadAbonementPosts } from '@/lib/loadAbonementsPage';
+import stylesAbonementPage from '@/styles/PageAbonement.module.scss';
 
 const cx = classNames.bind(styles);
+const cxAbonement = classNames.bind(stylesAbonementPage);
 
 export async function getStaticProps() {
   const abonements = await loadAbonementPosts();
   return {
     props: {
-      bodyClass: cx('bg-green'),
+      bodyClass: 'bg-green',
       abonements,
     },
   };
@@ -17,9 +19,9 @@ export async function getStaticProps() {
 
 export default function Abonement({ abonements }) {
   return (
-    <div className={cx('container')}>
+    <div className="container">
       <section className={cx('page-title')}>
-        <h1 className={cx('h1')}>Абонементы</h1>
+        <h1 className="h1">Абонементы</h1>
       </section>
       <section className={cx('page-filter')}>
         <div className={cx('page-filter__grid')}>
@@ -79,9 +81,12 @@ export default function Abonement({ abonements }) {
         />
       </section>
 
-      <section className="page-abonement">
+      <section className={cxAbonement('page-abonement')}>
         {abonements.map((abonement) => (
-          <AbonementItem key={`abonement_${abonement.id}`} abonement={abonement} />
+          <AbonementItem
+            key={`abonement_${abonement.id}`}
+            abonement={abonement}
+          />
         ))}
       </section>
     </div>

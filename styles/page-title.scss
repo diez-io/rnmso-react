@@ -1,6 +1,3 @@
-@import "variables.scss";
-@import "_mixins.scss";
-
 .page-title{
   display: flex;
   align-items: flex-end;
@@ -38,5 +35,28 @@
 
   a{
     display: inline-block;
+    border-bottom: 2px solid transparent;
+    @include link_w;
+    &.selected{
+      border-bottom: 2px solid;
+    }
+  }
+}
+.page-title__back{
+  position: relative;
+  display: block;
+  padding-left: 52px;
+
+  text-decoration: none;
+  @include font-size-m;
+  img{
+    content: "";
+    position: absolute;
+    width: 30px;
+    height: 100%;
+    left: 7px;
+    top: 0;
+    object-fit: contain;
+    object-position: center;
   }
 }

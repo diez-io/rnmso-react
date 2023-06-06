@@ -16,7 +16,7 @@ import {
 } from '@/lib/loadMainPosts';
 
 import styles from '@/styles/Main.module.scss';
-import stylesMainPage from '@/styles/MainPage.module.scss';
+import stylesMainPage from '@/styles/PageMain.module.scss';
 
 const cx = classNames.bind(styles);
 const cxMain = classNames.bind(stylesMainPage);
@@ -48,7 +48,7 @@ export default function Main({
     <>
       <section
         className={classNames(
-          cx('bg-green'),
+          'bg-green',
           cxMain('section-main', 'section-main__poster')
         )}
       >
@@ -82,7 +82,7 @@ export default function Main({
 
       <section
         className={classNames(
-          cx('bg-purple'),
+          'bg-purple',
           cxMain('section-main', 'section-main__news')
         )}
       >
@@ -98,7 +98,7 @@ export default function Main({
 
       <section
         className={classNames(
-          cx('bg-gray40'),
+          'bg-gray40',
           cxMain('section-main', 'section-main__video')
         )}
       >
@@ -110,7 +110,7 @@ export default function Main({
 
       <section
         className={classNames(
-          cx('bg-brown'),
+          'bg-brown',
           cxMain('section-main', 'section-main__photo')
         )}
       >
@@ -120,9 +120,9 @@ export default function Main({
         </div>
         <PhotoSlider posts={photoSlider} />
         <div className="container">
-          <a className={cxMain('link-main__all')} href="#">
+          <Link className={cxMain('link-main__all')} href="/photo">
             все фотографии
-          </a>
+          </Link>
         </div>
       </section>
     </>
@@ -291,7 +291,7 @@ function Video({ posts }) {
             cx('grid__inner', 'grid__inner_50')
           )}
         >
-          <p>
+          <p className={cxMain('video-article__date')}>
             {posts[0].date} · {posts[0].place}
           </p>
           <h4 className="h4">
@@ -329,7 +329,7 @@ function Video({ posts }) {
                   <Image width={200} height={200} src={post.image} alt="" />
                 </picture>
                 <div className={cxMain('video-article__text')}>
-                  <p>
+                  <p className={cxMain('video-article__date')}>
                     {post.date} · {post.place}
                   </p>
                   <h4 className="h4">
