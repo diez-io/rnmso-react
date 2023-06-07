@@ -132,3 +132,9 @@
     top: 0;
   }
 }
+@mixin card-hover{
+  transition: opacity 200ms;
+  &:hover{
+    opacity: 0.8;
+  }
+}

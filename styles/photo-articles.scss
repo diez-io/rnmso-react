@@ -8,6 +8,7 @@
   @media (max-width: 991px) {
     margin-top: 30px;
   }
+  @include card-hover;
 }
 .photo-article__text{
   padding-top: 15px;
@@ -69,6 +70,7 @@
   @media (max-width: 991px) {
     flex: 0 0 460px;
   }
+  @include card-hover;
 }
 .photo-slider-article__img{
   display: block;
@@ -91,12 +93,6 @@
 }
 .photo-slider-article__text{
   padding-right: 10px;
-  a{
-    display: inline;
-
-    font-size: $font-size-m;
-    line-height: 1.1em;
-  }
   p{
     margin: 0;
     padding: 5px 0 0 0;

@@ -99,6 +99,16 @@ body{
     text-decoration: none;
   }
 }
+.h5{
+  margin: 0;
+  padding: 0;
+
+  @include font-size-m;
+  font-weight: unset;
+  a{
+    text-decoration: none;
+  }
+}
 .link{
   @include link;
 }
