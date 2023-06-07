@@ -353,17 +353,15 @@ function Photo({ posts }) {
         key={`photo_${posts[0].id}`}
         className={cxMain('photo-article', 'photo-article_first')}
       >
-        <picture className={cxMain('photo-article__img')}>
-          <Image width={200} height={200} src={posts[0].image} alt="" />
-        </picture>
-        <div className={cxMain('photo-article__text')}>
-          <h4 className="h4">
-            <Link className="link" href="#">
-              {posts[0].title}
-            </Link>
-          </h4>
-          <p>{posts[0].count}</p>
-        </div>
+        <Link className="link" href={`/photo/${posts[0].id}`}>
+          <picture className={cxMain('photo-article__img')}>
+            <Image width={200} height={200} src={posts[0].image} alt="" />
+          </picture>
+          <div className={cxMain('photo-article__text')}>
+            <h4 className="h4">{posts[0].title}</h4>
+            <p>{posts[0].count}</p>
+          </div>
+        </Link>
       </article>
       <div className={cx('d-flex', 'flex-wrap')}>
         {posts.map(
@@ -376,17 +374,15 @@ function Photo({ posts }) {
                   cx('grid__inner', 'grid__inner_50')
                 )}
               >
-                <picture className={cxMain('photo-article__img')}>
-                  <Image width={200} height={200} src={post.image} alt="" />
-                </picture>
-                <div className={cxMain('photo-article__text')}>
-                  <h4 className="h4">
-                    <Link className="link" href="#">
-                      {post.title}
-                    </Link>
-                  </h4>
-                  <p>{post.count}</p>
-                </div>
+                <Link className="link" href={`/photo/${post.id}`}>
+                  <picture className={cxMain('photo-article__img')}>
+                    <Image width={200} height={200} src={post.image} alt="" />
+                  </picture>
+                  <div className={cxMain('photo-article__text')}>
+                    <h4 className="h4">{post.title}</h4>
+                    <p>{post.count}</p>
+                  </div>
+                </Link>
               </article>
             )
         )}
@@ -402,15 +398,16 @@ function PhotoSlider({ posts }) {
           key={`slider_${post.id}`}
           className={cxMain('photo-slider-article')}
         >
-          <picture className={cxMain('photo-slider-article__img')}>
-            <Image width={200} height={200} src={post.image} alt="" />
-          </picture>
-          <div className={cxMain('photo-slider-article__text')}>
-            <Link className="link" href="#">
-              {post.title}
-            </Link>
-            <p>{post.count}</p>
-          </div>
+          <Link className="link" href={`/photo/${post.id}`}>
+            <picture className={cxMain('photo-slider-article__img')}>
+              <Image width={200} height={200} src={post.image} alt="" />
+            </picture>
+            <div className={cxMain('photo-slider-article__text')}>
+              <h5 className="h5">{post.title}</h5>
+
+              <p>{post.count}</p>
+            </div>
+          </Link>
         </article>
       ))}
     </div>
