@@ -112,6 +112,9 @@ body{
 .link{
   @include link;
 }
+.link_underline{
+  @include link-underline;
+}
 .link_calendar{
   @media (max-width: 991px) {
     font-size: 0;
@@ -143,12 +146,14 @@ body{
   padding: 3px 12px 5px;
   min-width: 200px;
 
-  background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), #1A1A1A;
+  border: 2px solid $color-dark1a;
+  background: $color-dark1a;
   border-radius: 4px;
 
   @include font-size-24;
   text-align: center;
   text-decoration: none;
+  text-transform: lowercase;
   color: $color-lightgray;
   white-space: nowrap;
 
@@ -157,6 +162,11 @@ body{
 
     @include font-size-36;
     white-space: break-spaces;
+  }
+  &.btn_transparent{
+    padding: 7px 12px 9px 12px;
+    background: transparent;
+    color: $color-dark1a;
   }
 }
 .bg-white{

@@ -7,11 +7,12 @@ import LightGallery from 'lightgallery/react';
 import 'lightgallery/scss/lightgallery.scss';
 import 'lightgallery/scss/lg-zoom.scss';
 
-import { useState } from 'react';
 import PageTitle from '@/components/PageTitle';
+import stylesNav from '@/styles/NavPrevNext.module.scss';
 import stylesPhoto from '@/styles/PagePhoto.module.scss';
 import { getAllPhotoPostIds, getPhotoPost } from '@/lib/loadPhotoPage';
 
+const cxNav = classNames.bind(stylesNav);
 const cxPhoto = classNames.bind(stylesPhoto);
 
 export async function getStaticPaths() {
@@ -37,15 +38,14 @@ export default function PhotoPost({ postData }) {
   };
   return (
     <div className="container">
-      <PageTitle title="Фото" link="/photo" />
+      <PageTitle
+        type="inner"
+        titleBack="Фото"
+        linkBack="/photo"
+        title={data.title}
+        titleInfo={`${data.place}<br/>${data.date}`}
+      />
       <section className={cxPhoto('page-photo')}>
-        <div className={cxPhoto('page-photo__info')}>
-          {data.place}
-          <br />
-          {data.date}
-        </div>
-        <h1 className="h1">{data.title}</h1>
-
         <LightGallery
           onInit={onInit}
           speed={500}
@@ -58,11 +58,11 @@ export default function PhotoPost({ postData }) {
           ))}
         </LightGallery>
 
-        <div className={cxPhoto('page-photo__nav')}>
-          <Link className={cxPhoto('page-photo__nav_prev')} href="#">
+        <div className={cxNav('page__nav')}>
+          <Link className={cxNav('page__nav_prev')} href="#">
             Гастроли в Салехарде
           </Link>
-          <Link className={cxPhoto('page-photo__nav_next')} href="#">
+          <Link className={cxNav('page__nav_next')} href="#">
             Концерт с Аидой Гарифуллиной
           </Link>
         </div>

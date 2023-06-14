@@ -89,7 +89,7 @@ export default function Main({
         <div className="container">
           <h2 className="h2">Новости</h2>
           <News posts={news} />
-          <Link className={cxMain('link-main__all')} href="#">
+          <Link className={cxMain('link-main__all')} href="/news">
             все новости
           </Link>
           <div className="clearfix" />

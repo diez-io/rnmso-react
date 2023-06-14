@@ -1,5 +1,6 @@
 @import "video-articles";
 @import "photo-articles";
+@import "news-articles";
 
 //MAIN
 .section-main{
@@ -252,12 +253,6 @@
   @media (max-width: 991px) {
     width: 100%;
     margin-top: 45px;
-  }
-  span{
-    display: block;
-    margin-bottom: 5px;
-
-    @include font-size-22;
   }
   a{
     @include link_w;

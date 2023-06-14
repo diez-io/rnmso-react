@@ -1,0 +1,21 @@
+.page-news-post{
+  margin-bottom: 50px;
+}
+.page-news-post_width{
+  width: 67%;
+  @media (max-width: 991px) {
+    width: 100%;
+  }
+}
+.news-post__text{
+  @include font-size-24;
+  @media (max-width: 991px) {
+    @include font-size-28;
+  }
+  p{
+    @include m0p0;
+    &:not(:last-child) {
+      padding-bottom: 20px;
+    }
+  }
+}

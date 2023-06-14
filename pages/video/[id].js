@@ -38,7 +38,7 @@ export default function VideoPost({ postData }) {
   const onCloseModal = () => setOpen(false);
   return (
     <div className="container">
-      <PageTitle title="Видео" link="/video" />
+      <PageTitle type="inner" titleBack="Видео" linkBack="/video" />
       <section className={cxVideo('page-video')}>
         <div className={classNames(cx('d-flex'), cxVideo('video-section'))}>
           <div

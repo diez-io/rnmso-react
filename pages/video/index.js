@@ -4,15 +4,20 @@ import { useState } from 'react';
 import Image from 'next/image';
 import styles from '@/styles/Main.module.scss';
 import Tags from '@/components/Tags';
-import { getVideoPosts, loadVideoTags } from '@/lib/loadVideoPage';
+import {
+  getVideoPosts,
+  getVideoPostsLive,
+  loadVideoTags,
+} from '@/lib/loadVideoPage';
 import Player from '@/components/Player';
 import stylesVideo from '@/styles/PageVideos.module.scss';
+import PageTitle from "../../components/PageTitle";
 
 const cx = classNames.bind(styles);
 const cxVideo = classNames.bind(stylesVideo);
 
 export async function getStaticProps() {
-  const videoPosts = await getVideoPosts();
+  const videoPosts = await getVideoPostsLive();
   const tags = await loadVideoTags();
   return {
     props: {
@@ -39,23 +44,14 @@ export default function Video({ videoPosts, tags }) {
   };
   return (
     <div className="container">
-      <section className={cx('page-title')}>
-        <h1 className="h1">Видео</h1>
-        <div className={cx('page-title__links')}>
-          <Link className={classNames('link', cx('selected'))} href="/video">
-            Видео
-          </Link>
-          <Link className="link" href="/photo">
-            Фото
-          </Link>
-          <Link className="link" href="/news">
-            Новости
-          </Link>
-          <Link className="link" href="#">
-            Пресса
-          </Link>
-        </div>
-      </section>
+      <PageTitle type="links" title="Видео" links={
+        [
+            {link: '/video', name: 'Видео', selected: true},
+            {link: '/photo', name: 'Фото'},
+            {link: '/news', name: 'Новости'},
+            {link: '/press', name: 'Пресса'},
+        ]
+      }  />
       <Tags tags={tags} activeTags={filter} getPosts={(e) => handleClick(e)} />
       <section className={cxVideo('page-videos')}>
         <VideoItems posts={posts} />
@@ -105,9 +101,9 @@ function VideoItems({ posts }) {
           <div className={cx('square-img__item')}>
             <picture
               className={cx('square-img__body', 'square-img__body_circle')}
-              onClick={() => handleToggle(posts[0].url)}
+              onClick={() => handleToggle(posts[0].video)}
             >
-              <Image width={200} height={200} src={posts[0].image} alt="" />
+              <Image width={200} height={200} src={posts[0].video_thumbnail} alt="" />
             </picture>
           </div>
         </div>
@@ -115,7 +111,9 @@ function VideoItems({ posts }) {
       <div className={cx('d-flex', 'flex-wrap')}>
         {posts.map(
           (post, i) =>
-            i > 0 && (
+            i > 0 &&
+            post.video &&
+            post.video_thumbnail && (
               <article
                 key={`video_${post.id}`}
                 className={classNames(
@@ -125,9 +123,14 @@ function VideoItems({ posts }) {
               >
                 <picture
                   className={cxVideo('video-article__img')}
-                  onClick={() => handleToggle(post.url)}
+                  onClick={() => handleToggle(post.video)}
                 >
-                  <Image width={200} height={200} src={post.image} alt="" />
+                  <Image
+                    width={200}
+                    height={200}
+                    src={post.video_thumbnail}
+                    alt=""
+                  />
                 </picture>
                 <div className={cxVideo('video-article__text')}>
                   <p className={cxVideo('video-article__date')}>

@@ -10,6 +10,7 @@ import {
   loadPhotoTags,
   loadPhotoSlider,
 } from '@/lib/loadPhotoPage';
+import PageTitle from '../../components/PageTitle';
 
 const cx = classNames.bind(styles);
 const cxPhoto = classNames.bind(stylesPhoto);
@@ -45,23 +46,16 @@ export default function Photo({ photoPosts, photoSlider, tags }) {
   return (
     <>
       <div className="container">
-        <section className={cx('page-title')}>
-          <h1 className="h1">Фото</h1>
-          <div className={cx('page-title__links')}>
-            <Link className="link" href="/video">
-              Видео
-            </Link>
-            <Link className={classNames('link', cx('selected'))} href="/photo">
-              Фото
-            </Link>
-            <Link className="link" href="/news">
-              Новости
-            </Link>
-            <Link className="link" href="#">
-              Пресса
-            </Link>
-          </div>
-        </section>
+        <PageTitle
+          type="links"
+          title="Фото"
+          links={[
+            { link: '/video', name: 'Видео' },
+            { link: '/photo', name: 'Фото', selected: true },
+            { link: '/news', name: 'Новости' },
+            { link: '/press', name: 'Пресса' },
+          ]}
+        />
         <Tags
           tags={tags}
           activeTags={filter}
