@@ -7,10 +7,14 @@ import LightGallery from 'lightgallery/react';
 import 'lightgallery/scss/lightgallery.scss';
 import 'lightgallery/scss/lg-zoom.scss';
 
+import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
 import PageTitle from '@/components/PageTitle';
 import stylesNav from '@/styles/NavPrevNext.module.scss';
 import stylesPhoto from '@/styles/PagePhoto.module.scss';
 import { getAllPhotoPostIds, getPhotoPost } from '@/lib/loadPhotoPage';
+import { setBg } from '@/store/bgSlice';
+import {setActiveMenu} from "@/store/menuSlice";
 
 const cxNav = classNames.bind(stylesNav);
 const cxPhoto = classNames.bind(stylesPhoto);
@@ -26,12 +30,17 @@ export async function getStaticProps({ params }) {
   const postData = await getPhotoPost(params.id);
   return {
     props: {
-      bodyClass: 'bg-brown',
       postData,
     },
   };
 }
 export default function PhotoPost({ postData }) {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(setBg('bg-brown'));
+    dispatch(setActiveMenu('media'));
+  });
+
   const data = postData[0];
   const onInit = () => {
     console.log('lightGallery has been initialized');

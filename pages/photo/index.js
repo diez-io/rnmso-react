@@ -1,7 +1,8 @@
 import classNames from 'classnames/bind';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { useDispatch } from 'react-redux';
 import styles from '@/styles/Main.module.scss';
 import stylesPhoto from '@/styles/PagePhotos.module.scss';
 import Tags from '@/components/Tags';
@@ -11,6 +12,8 @@ import {
   loadPhotoSlider,
 } from '@/lib/loadPhotoPage';
 import PageTitle from '../../components/PageTitle';
+import { setBg } from '@/store/bgSlice';
+import {setActiveMenu} from "@/store/menuSlice";
 
 const cx = classNames.bind(styles);
 const cxPhoto = classNames.bind(stylesPhoto);
@@ -21,7 +24,6 @@ export async function getStaticProps() {
   const tags = await loadPhotoTags();
   return {
     props: {
-      bodyClass: 'bg-brown',
       photoPosts,
       photoSlider,
       tags,
@@ -30,6 +32,12 @@ export async function getStaticProps() {
 }
 
 export default function Photo({ photoPosts, photoSlider, tags }) {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(setBg('bg-brown'));
+    dispatch(setActiveMenu('media'));
+  });
+
   const [posts, setPosts] = useState(photoPosts);
   const [filter, setFilter] = useState([]);
 

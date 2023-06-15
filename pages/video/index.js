@@ -1,7 +1,8 @@
 import classNames from 'classnames/bind';
 import Link from 'next/link';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Image from 'next/image';
+import { useDispatch } from 'react-redux';
 import styles from '@/styles/Main.module.scss';
 import Tags from '@/components/Tags';
 import {
@@ -11,7 +12,9 @@ import {
 } from '@/lib/loadVideoPage';
 import Player from '@/components/Player';
 import stylesVideo from '@/styles/PageVideos.module.scss';
-import PageTitle from "../../components/PageTitle";
+import PageTitle from '../../components/PageTitle';
+import { setBg } from '@/store/bgSlice';
+import { setActiveMenu } from '@/store/menuSlice';
 
 const cx = classNames.bind(styles);
 const cxVideo = classNames.bind(stylesVideo);
@@ -21,7 +24,6 @@ export async function getStaticProps() {
   const tags = await loadVideoTags();
   return {
     props: {
-      bodyClass: 'bg-gray40',
       videoPosts,
       tags,
     },
@@ -29,6 +31,12 @@ export async function getStaticProps() {
 }
 
 export default function Video({ videoPosts, tags }) {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(setBg('bg-gray40'));
+    dispatch(setActiveMenu('media'));
+  });
+
   const [posts, setPosts] = useState(videoPosts);
   const [filter, setFilter] = useState([]);
 
@@ -44,14 +52,16 @@ export default function Video({ videoPosts, tags }) {
   };
   return (
     <div className="container">
-      <PageTitle type="links" title="Видео" links={
-        [
-            {link: '/video', name: 'Видео', selected: true},
-            {link: '/photo', name: 'Фото'},
-            {link: '/news', name: 'Новости'},
-            {link: '/press', name: 'Пресса'},
-        ]
-      }  />
+      <PageTitle
+        type="links"
+        title="Видео"
+        links={[
+          { link: '/video', name: 'Видео', selected: true },
+          { link: '/photo', name: 'Фото' },
+          { link: '/news', name: 'Новости' },
+          { link: '/press', name: 'Пресса' },
+        ]}
+      />
       <Tags tags={tags} activeTags={filter} getPosts={(e) => handleClick(e)} />
       <section className={cxVideo('page-videos')}>
         <VideoItems posts={posts} />
@@ -103,7 +113,12 @@ function VideoItems({ posts }) {
               className={cx('square-img__body', 'square-img__body_circle')}
               onClick={() => handleToggle(posts[0].video)}
             >
-              <Image width={200} height={200} src={posts[0].video_thumbnail} alt="" />
+              <Image
+                width={200}
+                height={200}
+                src={posts[0].video_thumbnail}
+                alt=""
+              />
             </picture>
           </div>
         </div>

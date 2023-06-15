@@ -1,8 +1,12 @@
 import classNames from 'classnames/bind';
+import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
 import styles from '@/styles/Main.module.scss';
 import AbonementItem from '@/components/abonement/AbonementItem';
 import { loadAbonementPosts } from '@/lib/loadAbonementsPage';
 import stylesAbonementPage from '@/styles/PageAbonement.module.scss';
+import { setBg } from '@/store/bgSlice';
+import {setActiveMenu} from "@/store/menuSlice";
 
 const cx = classNames.bind(styles);
 const cxAbonement = classNames.bind(stylesAbonementPage);
@@ -11,13 +15,18 @@ export async function getStaticProps() {
   const abonements = await loadAbonementPosts();
   return {
     props: {
-      bodyClass: 'bg-green',
       abonements,
     },
   };
 }
 
 export default function Abonement({ abonements }) {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(setBg('bg-green'));
+    dispatch(setActiveMenu('calendar'));
+  });
+
   return (
     <div className="container">
       <section className={cx('page-title')}>

@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import classNames from 'classnames/bind';
 import { MainLayout } from '@/components/MainLayout';
@@ -17,6 +17,9 @@ import {
 
 import styles from '@/styles/Main.module.scss';
 import stylesMainPage from '@/styles/PageMain.module.scss';
+import {useDispatch} from "react-redux";
+import {setBg} from "@/store/bgSlice";
+import {setActiveMenu} from "@/store/menuSlice";
 
 const cx = classNames.bind(styles);
 const cxMain = classNames.bind(stylesMainPage);
@@ -44,6 +47,11 @@ export default function Main({
   photo,
   photoSlider,
 }) {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(setBg(''));
+    dispatch(setActiveMenu(null));
+  });
   return (
     <>
       <section

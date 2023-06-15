@@ -1,11 +1,14 @@
 import classNames from 'classnames/bind';
 import Link from 'next/link';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import stylesAfishaPage from '@/styles/PageAfisha.module.scss';
 import { loadAfishaTags, getAfishaPosts } from '@/lib/loadAfishaPage';
 import Tags from '@/components/Tags';
 import PosterSection from '@/components/calendar/PosterSection';
 import styles from '@/styles/Main.module.scss';
+import { setBg } from '@/store/bgSlice';
+import {setActiveMenu} from "@/store/menuSlice";
 
 const cx = classNames.bind(styles);
 const cxAfisha = classNames.bind(stylesAfishaPage);
@@ -15,13 +18,18 @@ export async function getStaticProps() {
   const tags = await loadAfishaTags();
   return {
     props: {
-      bodyClass: 'bg-green',
       afishaPosts,
       tags,
     },
   };
 }
 export default function Calendar({ afishaPosts, tags }) {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(setBg('bg-green'));
+    dispatch(setActiveMenu('calendar'));
+  });
+
   const [posts, setPosts] = useState(afishaPosts);
   const [filter, setFilter] = useState([]);
 
@@ -37,9 +45,9 @@ export default function Calendar({ afishaPosts, tags }) {
   };
   return (
     <div className="container">
-      <section className={cx("page-title")}>
+      <section className={cx('page-title')}>
         <h1 className="h1">Афиша</h1>
-        <div className={cx("page-title__links")}>
+        <div className={cx('page-title__links')}>
           <Link className="link" href="/abonement">
             Абонементы
           </Link>

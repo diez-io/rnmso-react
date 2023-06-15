@@ -1,10 +1,14 @@
 import Link from 'next/link';
 import classNames from 'classnames/bind';
+import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
 import { getAllNewsPostIds, getNewsPost } from '@/lib/loadNewsPage';
 import stylesNav from '@/styles/NavPrevNext.module.scss';
 import stylesNewsPost from '@/styles/PageNewsPost.module.scss';
 import PageTitle from '../../components/PageTitle';
 import SubscribeBlock from '../../components/subscribe/SubscribeBlock';
+import { setBg } from '@/store/bgSlice';
+import {setActiveMenu} from "@/store/menuSlice";
 
 const cxNav = classNames.bind(stylesNav);
 const cxNewsPost = classNames.bind(stylesNewsPost);
@@ -20,12 +24,17 @@ export async function getStaticProps({ params }) {
   const data = await getNewsPost(params.id);
   return {
     props: {
-      bodyClass: 'bg-white',
       data,
     },
   };
 }
 export default function NewsPost({ data }) {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(setBg('bg-white'));
+    dispatch(setActiveMenu('media'));
+  });
+
   return (
     <>
       <div className="container">

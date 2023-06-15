@@ -1,11 +1,14 @@
 import classNames from 'classnames/bind';
 import Image from 'next/image';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
 import styles from '@/styles/Main.module.scss';
 import stylesVideoPage from '@/styles/PageVideo.module.scss';
 import Player from '@/components/Player';
 import { getAllVideoPostIds, getVideoPost } from '@/lib/loadVideoPage';
 import PageTitle from '@/components/PageTitle';
+import { setBg } from '@/store/bgSlice';
+import {setActiveMenu} from "@/store/menuSlice";
 
 const cx = classNames.bind(styles);
 const cxVideo = classNames.bind(stylesVideoPage);
@@ -21,12 +24,17 @@ export async function getStaticProps({ params }) {
   const postData = await getVideoPost(params.id);
   return {
     props: {
-      bodyClass: 'bg-gray40',
       postData,
     },
   };
 }
 export default function VideoPost({ postData }) {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(setBg('bg-gray40'));
+    dispatch(setActiveMenu('media'));
+  });
+
   const data = postData[0];
   const [open, setOpen] = useState(false);
   const [url, setUrl] = useState('');

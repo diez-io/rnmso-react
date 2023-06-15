@@ -1,5 +1,7 @@
 import classNames from 'classnames/bind';
 import Link from 'next/link';
+import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
 import {
   getAfishaPost,
   getAllAfishaPostIds,
@@ -12,6 +14,8 @@ import stylesConcertPage from '@/styles/PageConcert.module.scss';
 import PhotoCarousel from '@/components/PhotoCarousel';
 import PosterItem from '@/components/calendar/PosterItem';
 import AbonementsAfisha from '@/components/abonement/AbonementsAfisha';
+import { setBg } from '@/store/bgSlice';
+import {setActiveMenu} from "@/store/menuSlice";
 
 const cx = classNames.bind(styles);
 const cxAfisha = classNames.bind(stylesAfishaPage);
@@ -30,7 +34,6 @@ export async function getStaticProps({ params }) {
   const abonement = await loadAbonementPost(postData[0].abonementId);
   return {
     props: {
-      bodyClass: 'bg-green',
       postData,
       recommendedPosts,
       abonement,
@@ -42,6 +45,12 @@ export default function CalendarPost({
   recommendedPosts,
   abonement,
 }) {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(setBg('bg-green'));
+    dispatch(setActiveMenu('calendar'));
+  });
+
   const data = postData[0];
   return (
     <div className="container">
