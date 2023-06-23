@@ -67,6 +67,8 @@ export default function Photo({ photoPosts, photoSlider, tags }) {
         <Tags
           tags={tags}
           activeTags={filter}
+          nameField="title"
+          filterField="slug"
           getPosts={(e) => handleClick(e)}
         />
       </div>

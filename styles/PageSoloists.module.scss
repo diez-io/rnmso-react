@@ -1,0 +1,23 @@
+.page-soloists{
+  margin-bottom: 20px;
+}
+.soloists-item{
+  flex: 0 0 408px;
+  margin-bottom: 38px;
+  @media (max-width: 991px) {
+    flex: 1 1 calc(50% - 4px);
+  }
+}
+.soloists-item__img{
+  margin-bottom: 7px;
+}
+.soloists-item__name{
+  @include font-size-h3;
+  line-height: 1em;
+  @media (max-width: 991px) {
+    @include font-size-h4;
+  }
+}
+.soloists-item__descr{
+  @include font-size-m;
+}

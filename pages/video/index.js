@@ -15,6 +15,7 @@ import stylesVideo from '@/styles/PageVideos.module.scss';
 import PageTitle from '../../components/PageTitle';
 import { setBg } from '@/store/bgSlice';
 import { setActiveMenu } from '@/store/menuSlice';
+import ModalWindow from '@/components/ModalWindow';
 
 const cx = classNames.bind(styles);
 const cxVideo = classNames.bind(stylesVideo);
@@ -62,7 +63,13 @@ export default function Video({ videoPosts, tags }) {
           { link: '/press', name: 'Пресса' },
         ]}
       />
-      <Tags tags={tags} activeTags={filter} getPosts={(e) => handleClick(e)} />
+      <Tags
+        tags={tags}
+        activeTags={filter}
+        nameField="title"
+        filterField="slug"
+        getPosts={(e) => handleClick(e)}
+      />
       <section className={cxVideo('page-videos')}>
         <VideoItems posts={posts} />
       </section>
@@ -161,7 +168,9 @@ function VideoItems({ posts }) {
             )
         )}
       </div>
-      <Player open={open} closeModal={onCloseModal} url={url} />
+      <ModalWindow open={open} closeModal={onCloseModal} type="video">
+        <Player url={url} />
+      </ModalWindow>
     </div>
   );
 }

@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import classNames from 'classnames/bind';
+import { useDispatch } from 'react-redux';
 import { MainLayout } from '@/components/MainLayout';
 import Player from '@/components/Player';
 
@@ -17,9 +18,9 @@ import {
 
 import styles from '@/styles/Main.module.scss';
 import stylesMainPage from '@/styles/PageMain.module.scss';
-import {useDispatch} from "react-redux";
-import {setBg} from "@/store/bgSlice";
-import {setActiveMenu} from "@/store/menuSlice";
+import { setBg } from '@/store/bgSlice';
+import { setActiveMenu } from '@/store/menuSlice';
+import ModalWindow from '@/components/ModalWindow';
 
 const cx = classNames.bind(styles);
 const cxMain = classNames.bind(stylesMainPage);
@@ -350,7 +351,9 @@ function Video({ posts }) {
             )
         )}
       </div>
-      <Player open={open} closeModal={onCloseModal} url={url} />
+      <ModalWindow open={open} closeModal={onCloseModal} type="video">
+        <Player url={url} />
+      </ModalWindow>
     </div>
   );
 }

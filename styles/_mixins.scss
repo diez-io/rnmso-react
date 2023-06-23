@@ -55,6 +55,16 @@
   line-height: $line-height-num;
   letter-spacing: $letter-num;
 }
+@mixin font-size-h1{
+  font-size: $font-size-h1;
+  line-height: $line-height-h1;
+  letter-spacing: $letter-h1;
+}
+@mixin font-size-h3{
+  font-size: $font-size-h3;
+  line-height: $line-height-h3;
+  letter-spacing: $letter-h3;
+}
 @mixin font-size-h4{
   font-size: $font-size-h4;
   line-height: $line-height-h4;

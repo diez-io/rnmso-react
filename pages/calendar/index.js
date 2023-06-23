@@ -9,9 +9,12 @@ import PosterSection from '@/components/calendar/PosterSection';
 import styles from '@/styles/Main.module.scss';
 import { setBg } from '@/store/bgSlice';
 import {setActiveMenu} from "@/store/menuSlice";
+import stylesTitle from "@/styles/TitlePage.module.scss";
+import PageTitle from "@/components/PageTitle";
 
 const cx = classNames.bind(styles);
 const cxAfisha = classNames.bind(stylesAfishaPage);
+const cxTitle = classNames.bind(stylesTitle);
 
 export async function getStaticProps() {
   const afishaPosts = await getAfishaPosts();
@@ -45,22 +48,25 @@ export default function Calendar({ afishaPosts, tags }) {
   };
   return (
     <div className="container">
-      <section className={cx('page-title')}>
-        <h1 className="h1">Афиша</h1>
-        <div className={cx('page-title__links')}>
-          <Link className="link" href="/abonement">
-            Абонементы
-          </Link>
-          <Link className="link link_calendar" href="#">
-            Календарь
-          </Link>
-          <Link className="link link_filter" href="#">
-            Фильтр
-          </Link>
-        </div>
-      </section>
+      <PageTitle type="custom" title="Афиша" customClass="page-title_poster">
+        <Link className="link" href="/abonement">
+          Абонементы
+        </Link>
+        <Link className="link link_calendar" href="#">
+          Календарь
+        </Link>
+        <Link className="link link_filter" href="#">
+          Фильтр
+        </Link>
+      </PageTitle>
 
-      <Tags tags={tags} activeTags={filter} getPosts={(e) => handleClick(e)} />
+      <Tags
+        tags={tags}
+        activeTags={filter}
+        nameField="title"
+        filterField="slug"
+        getPosts={(e) => handleClick(e)}
+      />
 
       <section className={cxAfisha('page-poster')}>
         {posts?.map((section, i) => (

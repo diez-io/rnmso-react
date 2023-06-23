@@ -6,7 +6,7 @@
   gap: 8px;
   margin-bottom: 53px;
   @media (max-width: 991px) {
-    margin-left: -20px;
+    margin-left: -9px;
     margin-right: -20px;
     margin-bottom: 35px;
     padding: 0 5px;
@@ -22,11 +22,11 @@
 
     position: relative;
     display: block;
-    padding: 10px 16px;
+    padding: 8px 16px;
     gap: 12px;
 
     background: $color-lightgray;
-    border: 0;
+    border: 2px solid $color-lightgray;
     border-radius: 22px;
     outline: none;
 
@@ -36,7 +36,6 @@
     &.active{
       padding-right: 55px;
       background-color: transparent;
-      border: 2px solid $color-dark1a;
       &:after{
         content: "";
         position: absolute;
@@ -47,6 +46,17 @@
         background: url("/images/dest/icons/icon-button-active.svg") no-repeat center;
         background-size: contain;
       }
+    }
+  }
+}
+.page-tags_black{
+  button{
+    background: $color-dark1a;
+    border: 2px solid $color-dark1a;
+
+    color: $color-white;
+    &.active{
+      color: $color-dark1a;
     }
   }
 }

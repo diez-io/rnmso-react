@@ -36,7 +36,7 @@ export default function Abonement({ abonements }) {
         <div className={cx('page-filter__grid')}>
           <div className={cx('switch__container')}>
             <div className={cx('switch__toggle-container')}>
-              <input id="year1" name="year" type="radio" checked />
+              <input id="year1" name="year" type="radio" defaultChecked />
               <label
                 htmlFor="year1"
                 className={cx('switch__label', 'switch__label_left')}

@@ -6,12 +6,14 @@ import stylesTitle from '@/styles/TitlePage.module.scss';
 const cxTitle = classNames.bind(stylesTitle);
 
 export default function PageTitle({
+  children,
   type,
   titleBack,
   linkBack,
   title,
   titleInfo,
   links,
+  customClass
 }) {
   switch (type) {
     case 'inner':
@@ -52,14 +54,15 @@ export default function PageTitle({
     case 'links':
       return (
         <>
-          {title && links && (
+          {title && (
             <section
               className={classNames('main-title', cxTitle('page-title'))}
             >
               <h1 className="h1">{title}</h1>
-              <div className={cxTitle('page-title__links')}>
+              <div className={cxTitle(`page-title__links`)}>
                 {links.map((item) => (
                   <Link
+                    key={item.link}
                     className={classNames(
                       'link',
                       item.selected && cxTitle('selected')
@@ -74,7 +77,23 @@ export default function PageTitle({
           )}
         </>
       );
+    case 'custom':
+      return (
+        <section
+          className={classNames(
+            'main-title',
+            cxTitle('page-title', customClass)
+          )}
+        >
+          <h1 className="h1">{title}</h1>
+          <div className={cxTitle(`page-title__links`)}>{children}</div>
+        </section>
+      );
     default:
-      return <></>;
+      return (
+        <section className={classNames('main-title', cxTitle('page-title'))}>
+          {title && <h1 className="h1">{title}</h1>}
+        </section>
+      );
   }
 }
