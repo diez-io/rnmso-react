@@ -1,5 +1,6 @@
 @import "grid";
 
+@import "page-title";
 @import "page-filter";
 @import "page-search";
 @import "footer";
@@ -8,24 +9,3 @@
 @import "select";
 @import "input-text";
 @import "square-img";
-
-/*@import "main-page";*/
-/*@import "poster-page";*/
-/*@import "concert-page";*/
-/*@import "abonement-page";*/
-
-.bg-green{
-  background-color: $color-green;
-}
-.bg-purple{
-  background-color: $color-purple;
-}
-.bg-gray40{
-  background-color: $color-gray40;
-}
-.bg-gray26{
-  background-color: $color-dark26;
-}
-.bg-brown{
-  background-color: $color-brown;
-}

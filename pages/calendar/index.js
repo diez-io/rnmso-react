@@ -1,27 +1,38 @@
 import classNames from 'classnames/bind';
 import Link from 'next/link';
-import { useState } from 'react';
-import styles from '@/styles/Main.module.scss';
-import stylesAfishaPage from '@/styles/AfishaPage.module.scss';
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import stylesAfishaPage from '@/styles/PageAfisha.module.scss';
 import { loadAfishaTags, getAfishaPosts } from '@/lib/loadAfishaPage';
 import Tags from '@/components/Tags';
 import PosterSection from '@/components/calendar/PosterSection';
+import styles from '@/styles/Main.module.scss';
+import { setBg } from '@/store/bgSlice';
+import {setActiveMenu} from "@/store/menuSlice";
+import stylesTitle from "@/styles/TitlePage.module.scss";
+import PageTitle from "@/components/PageTitle";
 
 const cx = classNames.bind(styles);
 const cxAfisha = classNames.bind(stylesAfishaPage);
+const cxTitle = classNames.bind(stylesTitle);
 
 export async function getStaticProps() {
   const afishaPosts = await getAfishaPosts();
   const tags = await loadAfishaTags();
   return {
     props: {
-      bodyClass: cx('bg-green'),
       afishaPosts,
       tags,
     },
   };
 }
 export default function Calendar({ afishaPosts, tags }) {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(setBg('bg-green'));
+    dispatch(setActiveMenu('calendar'));
+  });
+
   const [posts, setPosts] = useState(afishaPosts);
   const [filter, setFilter] = useState([]);
 
@@ -37,22 +48,25 @@ export default function Calendar({ afishaPosts, tags }) {
   };
   return (
     <div className="container">
-      <section className="page-title">
-        <h1 className="h1">Афиша</h1>
-        <div className="page-title__links">
-          <Link className="link" href="/abonement">
-            Абонементы
-          </Link>
-          <Link className="link link_calendar" href="#">
-            Календарь
-          </Link>
-          <Link className="link link_filter" href="#">
-            Фильтр
-          </Link>
-        </div>
-      </section>
+      <PageTitle type="custom" title="Афиша" customClass="page-title_poster">
+        <Link className="link" href="/abonement">
+          Абонементы
+        </Link>
+        <Link className="link link_calendar" href="#">
+          Календарь
+        </Link>
+        <Link className="link link_filter" href="#">
+          Фильтр
+        </Link>
+      </PageTitle>
 
-      <Tags tags={tags} activeTags={filter} getPosts={(e) => handleClick(e)} />
+      <Tags
+        tags={tags}
+        activeTags={filter}
+        nameField="title"
+        filterField="slug"
+        getPosts={(e) => handleClick(e)}
+      />
 
       <section className={cxAfisha('page-poster')}>
         {posts?.map((section, i) => (

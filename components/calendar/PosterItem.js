@@ -2,9 +2,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 import classNames from 'classnames/bind';
 import styles from '@/styles/Main.module.scss';
-import stylesAfishaPage from '@/styles/AfishaPage.module.scss';
+import stylesAfishaPage from '@/styles/PageAfisha.module.scss';
 
-const cx = classNames.bind(styles);
 const cxAfisha = classNames.bind(stylesAfishaPage);
 
 const placeholderImage =
@@ -32,8 +31,8 @@ export default function PosterItem({ post }) {
         />
       </picture>
       <div className={cxAfisha('poster-section__text')}>
-        <h4 className={cx('h4')}>
-          <Link className={cx('link')} href={`/calendar/${post.id}`}>
+        <h4 className="h4">
+          <Link className="link" href={`/calendar/${post.id}`}>
             {post.title}
           </Link>
         </h4>
@@ -42,9 +41,9 @@ export default function PosterItem({ post }) {
         <span>{post.abonement}</span>
       </div>
       <div className={cxAfisha('poster-section__actions')}>
-        <a href="#" className='btn'>
+        <Link href="#" className="btn">
           купить абонемент
-        </a>
+        </Link>
       </div>
     </article>
   );

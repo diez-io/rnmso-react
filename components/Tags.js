@@ -1,20 +1,33 @@
 import classNames from 'classnames/bind';
 import styles from '@/styles/Tags.module.scss';
 
-const cx = classNames.bind(styles);
+const cxTags = classNames.bind(styles);
 
-export default function Tags({ tags, getPosts, activeTags }) {
+export default function Tags({
+  tags,
+  getPosts,
+  activeTags,
+  type,
+  nameField,
+  filterField,
+}) {
   return (
-    <section className={cx('page-tags')}>
+    <section
+      className={cxTags('page-tags', type === 'black' && 'page-tags_black')}
+    >
       {tags.map((tag) => (
         <button
           type="button"
-          key={tag.slug}
-          value={tag.slug}
-          className={activeTags.includes(tag.slug) ? cx('active') : ''}
+          key={`tag_${tag[filterField]}`}
+          value={tag[filterField]}
+          className={
+            activeTags.includes(String(tag[filterField]))
+              ? cxTags('active')
+              : ''
+          }
           onClick={getPosts}
         >
-          {tag.title}
+          {tag[nameField]}
         </button>
       ))}
     </section>

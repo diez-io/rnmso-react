@@ -21,13 +21,8 @@
     letter-spacing: 0.022em;
     text-transform: lowercase;
   }
-  &.menu-main__item_b{
-    a{
-      @include link_b;
-    }
-  }
   &.selected a{
-    border-bottom: 2px solid $color-dark1a;
+    border-bottom: 2px solid;
   }
 
 }

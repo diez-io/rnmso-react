@@ -1,7 +1,8 @@
 import Link from 'next/link';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import classNames from 'classnames/bind';
+import { useDispatch } from 'react-redux';
 import { MainLayout } from '@/components/MainLayout';
 import Player from '@/components/Player';
 
@@ -16,7 +17,10 @@ import {
 } from '@/lib/loadMainPosts';
 
 import styles from '@/styles/Main.module.scss';
-import stylesMainPage from '@/styles/MainPage.module.scss';
+import stylesMainPage from '@/styles/PageMain.module.scss';
+import { setBg } from '@/store/bgSlice';
+import { setActiveMenu } from '@/store/menuSlice';
+import ModalWindow from '@/components/ModalWindow';
 
 const cx = classNames.bind(styles);
 const cxMain = classNames.bind(stylesMainPage);
@@ -44,11 +48,16 @@ export default function Main({
   photo,
   photoSlider,
 }) {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(setBg(''));
+    dispatch(setActiveMenu(null));
+  });
   return (
     <>
       <section
         className={classNames(
-          cx('bg-green'),
+          'bg-green',
           cxMain('section-main', 'section-main__poster')
         )}
       >
@@ -82,14 +91,14 @@ export default function Main({
 
       <section
         className={classNames(
-          cx('bg-purple'),
+          'bg-purple',
           cxMain('section-main', 'section-main__news')
         )}
       >
         <div className="container">
           <h2 className="h2">Новости</h2>
           <News posts={news} />
-          <Link className={cxMain('link-main__all')} href="#">
+          <Link className={cxMain('link-main__all')} href="/news">
             все новости
           </Link>
           <div className="clearfix" />
@@ -98,7 +107,7 @@ export default function Main({
 
       <section
         className={classNames(
-          cx('bg-gray40'),
+          'bg-gray40',
           cxMain('section-main', 'section-main__video')
         )}
       >
@@ -110,7 +119,7 @@ export default function Main({
 
       <section
         className={classNames(
-          cx('bg-brown'),
+          'bg-brown',
           cxMain('section-main', 'section-main__photo')
         )}
       >
@@ -120,9 +129,9 @@ export default function Main({
         </div>
         <PhotoSlider posts={photoSlider} />
         <div className="container">
-          <a className={cxMain('link-main__all')} href="#">
+          <Link className={cxMain('link-main__all')} href="/photo">
             все фотографии
-          </a>
+          </Link>
         </div>
       </section>
     </>
@@ -291,7 +300,7 @@ function Video({ posts }) {
             cx('grid__inner', 'grid__inner_50')
           )}
         >
-          <p>
+          <p className={cxMain('video-article__date')}>
             {posts[0].date} · {posts[0].place}
           </p>
           <h4 className="h4">
@@ -329,7 +338,7 @@ function Video({ posts }) {
                   <Image width={200} height={200} src={post.image} alt="" />
                 </picture>
                 <div className={cxMain('video-article__text')}>
-                  <p>
+                  <p className={cxMain('video-article__date')}>
                     {post.date} · {post.place}
                   </p>
                   <h4 className="h4">
@@ -342,7 +351,9 @@ function Video({ posts }) {
             )
         )}
       </div>
-      <Player open={open} closeModal={onCloseModal} url={url} />
+      <ModalWindow open={open} closeModal={onCloseModal} type="video">
+        <Player url={url} />
+      </ModalWindow>
     </div>
   );
 }
@@ -353,17 +364,15 @@ function Photo({ posts }) {
         key={`photo_${posts[0].id}`}
         className={cxMain('photo-article', 'photo-article_first')}
       >
-        <picture className={cxMain('photo-article__img')}>
-          <Image width={200} height={200} src={posts[0].image} alt="" />
-        </picture>
-        <div className={cxMain('photo-article__text')}>
-          <h4 className="h4">
-            <Link className="link" href="#">
-              {posts[0].title}
-            </Link>
-          </h4>
-          <p>{posts[0].count}</p>
-        </div>
+        <Link className="link" href={`/photo/${posts[0].id}`}>
+          <picture className={cxMain('photo-article__img')}>
+            <Image width={200} height={200} src={posts[0].image} alt="" />
+          </picture>
+          <div className={cxMain('photo-article__text')}>
+            <h4 className="h4">{posts[0].title}</h4>
+            <p>{posts[0].count}</p>
+          </div>
+        </Link>
       </article>
       <div className={cx('d-flex', 'flex-wrap')}>
         {posts.map(
@@ -376,17 +385,15 @@ function Photo({ posts }) {
                   cx('grid__inner', 'grid__inner_50')
                 )}
               >
-                <picture className={cxMain('photo-article__img')}>
-                  <Image width={200} height={200} src={post.image} alt="" />
-                </picture>
-                <div className={cxMain('photo-article__text')}>
-                  <h4 className="h4">
-                    <Link className="link" href="#">
-                      {post.title}
-                    </Link>
-                  </h4>
-                  <p>{post.count}</p>
-                </div>
+                <Link className="link" href={`/photo/${post.id}`}>
+                  <picture className={cxMain('photo-article__img')}>
+                    <Image width={200} height={200} src={post.image} alt="" />
+                  </picture>
+                  <div className={cxMain('photo-article__text')}>
+                    <h4 className="h4">{post.title}</h4>
+                    <p>{post.count}</p>
+                  </div>
+                </Link>
               </article>
             )
         )}
@@ -402,15 +409,16 @@ function PhotoSlider({ posts }) {
           key={`slider_${post.id}`}
           className={cxMain('photo-slider-article')}
         >
-          <picture className={cxMain('photo-slider-article__img')}>
-            <Image width={200} height={200} src={post.image} alt="" />
-          </picture>
-          <div className={cxMain('photo-slider-article__text')}>
-            <Link className="link" href="#">
-              {post.title}
-            </Link>
-            <p>{post.count}</p>
-          </div>
+          <Link className="link" href={`/photo/${post.id}`}>
+            <picture className={cxMain('photo-slider-article__img')}>
+              <Image width={200} height={200} src={post.image} alt="" />
+            </picture>
+            <div className={cxMain('photo-slider-article__text')}>
+              <h5 className="h5">{post.title}</h5>
+
+              <p>{post.count}</p>
+            </div>
+          </Link>
         </article>
       ))}
     </div>

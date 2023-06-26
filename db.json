@@ -102,7 +102,9 @@
       "date": "18.02.2022",
       "place": "Концертный зал имени П. И. Чайковского",
       "image": "/images/dest/content/main/video1.png",
-      "url": "https://www.youtube.com/watch?v=arj7oStGLkU"
+      "url": "https://www.youtube.com/watch?v=arj7oStGLkU",
+      "description": "Денис Мацуев, фортепиано<br/> Юлиан Рахлин, дирижёр",
+      "program": "П. И. Чайковский<br/> Концерт № 1 для фортепиано с оркестром, соч. 23<br/> Симфония № 5 ми минор, соч. 64"
     },
     {
       "id": "2",
@@ -156,33 +158,88 @@
   "photo": [
     {
       "id": "1",
+      "date": "14 января 2022",
       "title": "Концерт под управлением Михаила Юровского. Солист Дмитрий Маслеев",
+      "place": "«Филармония-2». Концерный зал Рахманинова",
       "count": "13 фотографий",
-      "image": "/images/dest/content/main/photo1.png"
+      "image": "/images/dest/content/main/photo1.png",
+      "items": [
+        "/images/dest/content/main/photo1.png",
+        "/images/dest/content/main/photo2.png",
+        "/images/dest/content/main/photo3.png",
+        "/images/dest/content/main/photo4.png",
+        "/images/dest/content/main/photo3.png",
+        "/images/dest/content/main/photo2.png",
+        "/images/dest/content/main/photo1.png"
+      ]
     },
     {
       "id": "2",
+      "date": "14 января 2022",
       "title": "Вадим Репин, Александр Князев, Константин Лифшиц, Саша Гетцель исполняют Генделя",
+      "place": "«Филармония-2». Концерный зал Рахманинова",
       "count": "13 фотографий",
-      "image": "/images/dest/content/main/photo2.png"
+      "image": "/images/dest/content/main/photo2.png",
+      "items": [
+        "/images/dest/content/main/photo1.png",
+        "/images/dest/content/main/photo2.png",
+        "/images/dest/content/main/photo3.png",
+        "/images/dest/content/main/photo4.png",
+        "/images/dest/content/main/photo3.png",
+        "/images/dest/content/main/photo2.png",
+        "/images/dest/content/main/photo1.png"
+      ]
     },
     {
       "id": "3",
+      "date": "14 января 2022",
       "title": "Концерт в Кремле Нижнего Новгорода",
+      "place": "«Филармония-2». Концерный зал Рахманинова",
       "count": "13 фотографий",
-      "image": "/images/dest/content/main/photo3.png"
+      "image": "/images/dest/content/main/photo3.png",
+      "items": [
+        "/images/dest/content/main/photo1.png",
+        "/images/dest/content/main/photo2.png",
+        "/images/dest/content/main/photo3.png",
+        "/images/dest/content/main/photo4.png",
+        "/images/dest/content/main/photo3.png",
+        "/images/dest/content/main/photo2.png",
+        "/images/dest/content/main/photo1.png"
+      ]
     },
     {
       "id": "4",
+      "date": "14 января 2022",
       "title": "Пятый Всероссийский конкурс артистов симфонического оркестра. Открытие конкурса и жеребьёвка",
+      "place": "«Филармония-2». Концерный зал Рахманинова",
       "count": "13 фотографий",
-      "image": "/images/dest/content/main/photo4.png"
+      "image": "/images/dest/content/main/photo4.png",
+      "items": [
+        "/images/dest/content/main/photo1.png",
+        "/images/dest/content/main/photo2.png",
+        "/images/dest/content/main/photo3.png",
+        "/images/dest/content/main/photo4.png",
+        "/images/dest/content/main/photo3.png",
+        "/images/dest/content/main/photo2.png",
+        "/images/dest/content/main/photo1.png"
+      ]
     },
     {
       "id": "5",
+      "date": "14 января 2022",
       "title": "РНМСО, Павел Милюков, Тимур Зангиев в «Сириусе»",
+      "place": "«Филармония-2». Концерный зал Рахманинова",
       "count": "13 фотографий",
-      "image": "/images/dest/content/main/photo5.png"
+      "image": "/images/dest/content/main/photo5.png",
+      "items": [
+        "/images/dest/content/main/photo1.png",
+        "/images/dest/content/main/photo2.png",
+        "/images/dest/content/main/photo3.png",
+        "/images/dest/content/main/photo4.png",
+        "/images/dest/content/main/photo3.png",
+        "/images/dest/content/main/photo2.png",
+        "/images/dest/content/main/photo1.png"
+      ]
     }
   ],
   "photo_slider": [
@@ -332,7 +389,7 @@
       ]
     }
   ],
-  "posterTags": [
+  "tags": [
     {
       "id": 1,
       "slug": "slug1",
@@ -443,5 +500,20 @@
         }
       ]
     }
-  ]
+  ],
+  "member": {
+    "id": 101,
+    "created_at": "2020-03-09T08:35:57.052627+03:00",
+    "updated_at": "2020-12-02T01:12:40.768993+03:00",
+    "published": true,
+    "first_name": "Алексей",
+    "last_name": "Бруни",
+    "biography": "<p>Российская академия музыки им. Гнесиных.<br />Класс профессора Д.М.Лукьянова.</p>\r\n<p>Международный конкурс ударных инструментов &ldquo;Wiener Klang&rdquo; (I премия, Вена).</p>\r\n<p>IV Всероссийский конкурс ансамблей духовых и ударных инструментов (II премия, Казань, 2014).</p>\r\n<p>Международный фестиваль-конкурс &ldquo;Парад ударных инструментов&rdquo; (III премия, Москва, 2016).</p>\r\n<p>Концертмейстер Академического оркестра русских народных инструментов имени Н. Н. Некрасова ВГТРК (с 2016).</p>",
+    "image": "https://rnmso.ru/media/RAZ_3583_300%D1%85300_ngk8iDh.jpg",
+    "is_concertmaster": true,
+    "is_first_concertmaster": true,
+    "is_intern": false,
+    "status": "1-й солист",
+    "group": 15
+  }
 }

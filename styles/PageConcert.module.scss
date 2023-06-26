@@ -33,11 +33,13 @@
   padding: 0;
   width: calc(100% + 20px);
   margin-top: 15px;
+  margin-bottom: 25px;
   @media (max-width: 991px) {
     display: block;
   }
 }
 .concert-section__title{
+  margin-bottom: 27px;
   @media (max-width: 991px) {
     display: flex;
     flex-wrap: wrap;
@@ -76,20 +78,18 @@
 }
 
 .concert-section__links{
-  margin-top: 27px;
   margin-bottom: 36px;
-  .btn{
+  a, button{
     @media (max-width: 991px) {
       width: 100%;
     }
   }
 }
 .concert-section__text{
+  @include font-size-24;
   p{
     margin: 0;
     padding: 0 0 20px 0;
-
-    @include font-size-24;
   }
   p:last-child{
     padding-bottom: 0;
@@ -140,10 +140,15 @@
     margin-top: 5px;
     @include font-size-m;
   }
-  .concert-section__inner:last-child{
-    padding-left: 0;
+  & > div {
+    @media (max-width: 991px) {
+      width: 100%;
+    }
+    &:last-child {
+      padding-left: 0;
+    }
   }
-  .btn{
+  a, button{
     display: block;
   }
 }

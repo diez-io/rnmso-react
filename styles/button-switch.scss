@@ -1,6 +1,3 @@
-@import "variables.scss";
-@import "_mixins.scss";
-
 .switch__container {
   position: relative;
   width: 252px;
@@ -12,7 +9,7 @@
   display: block;
   position: absolute;
   top: 0;
-  width: 127px;
+  width: 50%;
   height: 40px;
   padding-top: 10px;
   z-index: 5;
@@ -36,20 +33,23 @@
 .switch__pill {
   position: relative;
   height: 40px;
-  width: 252px;
+  width: 100%;
   background: $color-lightgray;
   border-radius: 8px;
   transition: all 500ms;
 }
 .switch__toggle {
   position: absolute;
-  width: 127px;
+  width: 50%;
   height: 40px;
   background-color: $color-dark1a;
   left: 0;
   border-radius: 8px;
   transition: all 500ms;
   z-index: 4;
+}
+.switch__toggle-container{
+  width: 100%;
 }
 /*
 Toggle Changes
@@ -61,7 +61,7 @@ Toggle Changes
   left: 0;
 }
 .switch__container input:checked+.switch__label_right~.switch__toggle {
-  left: 127px;
+  left: 50%;
 }
 
 

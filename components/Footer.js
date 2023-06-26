@@ -1,10 +1,17 @@
 import Link from 'next/link';
 import classNames from 'classnames/bind';
+import { useSelector } from 'react-redux';
+import { useEffect } from 'react';
 import styles from '../styles/Main.module.scss';
+import { selectBg } from '@/store/bgSlice';
 
 const cx = classNames.bind(styles);
 
 export default function Footer() {
+  const bg = useSelector(selectBg);
+  useEffect(() => {
+    document.body.className = bg;
+  }, [bg]);
   return (
     <footer className={cx('footer', 'bg-gray26')}>
       <div className="container">

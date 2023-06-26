@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import classNames from 'classnames/bind';
 import styles from '@/styles/Main.module.scss';
-import stylesAbonementPage from '@/styles/AbonementPage.module.scss';
+import stylesAbonementPage from '@/styles/PageAbonement.module.scss';
 
 const cx = classNames.bind(styles);
 const cxAbonement = classNames.bind(stylesAbonementPage);
@@ -51,7 +51,7 @@ export default function AbonementItem({ abonement }) {
       <div className={cxAbonement('abonement-section__items')}>
         {abonement.concerts.map((item) => (
           <div
-              key={`concer_${item.id}`}
+            key={`concer_${item.id}`}
             className={cxAbonement(
               'abonement-section__item',
               'abonement-section_separate'

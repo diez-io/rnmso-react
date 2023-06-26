@@ -15,6 +15,11 @@
   line-height: $line-height-22;
   letter-spacing: $letter-22;
 }
+@mixin font-size-24{
+  font-size: $font-size-24;
+  line-height: $line-height-24;
+  letter-spacing: $letter-24;
+}
 @mixin font-size-28{
   font-size: $font-size-28;
   line-height: $line-height-28;
@@ -49,6 +54,16 @@
   font-size: $font-size-num;
   line-height: $line-height-num;
   letter-spacing: $letter-num;
+}
+@mixin font-size-h1{
+  font-size: $font-size-h1;
+  line-height: $line-height-h1;
+  letter-spacing: $letter-h1;
+}
+@mixin font-size-h3{
+  font-size: $font-size-h3;
+  line-height: $line-height-h3;
+  letter-spacing: $letter-h3;
 }
 @mixin font-size-h4{
   font-size: $font-size-h4;
@@ -110,6 +125,11 @@
     background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), $color-dark1a;
   }
 }
+@mixin section-line-w{
+  &:after{
+    background: $color-lightgray;
+  }
+}
 @mixin section-line-bottom{
   @include section-line;
   &:after{
@@ -120,5 +140,19 @@
   @include section-line;
   &:after{
     top: 0;
+  }
+}
+@mixin card-hover{
+  transition: opacity 200ms;
+  &:hover{
+    opacity: 0.8;
+  }
+}
+@mixin img{
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
   }
 }

@@ -12,12 +12,14 @@ export default function HeaderInner() {
   return (
     <header className={cxHeader('page-header')}>
       <div className="container">
-        <div className={classNames(cx('d-flex'), cxHeader('page-header__inner'))}
+        <div
+          className={classNames(cx('d-flex'), cxHeader('page-header__inner'))}
         >
           <div className={cxHeader('header__logo', 'header__logo_mob')}>
             <Link href="/">
               <Image
-                src="/images/dest/logo-b.svg"
+                className="svg_color"
+                src="/images/dest/logo.svg"
                 height="50"
                 width="312"
                 alt=""
@@ -25,37 +27,28 @@ export default function HeaderInner() {
             </Link>
           </div>
           <div className={cx('d-flex', 'justify-start')}>
-            <div className={cxHeader('header__logo', 'header__logo_page')}>
+            <div
+              className={cxHeader('header__logo', 'header__logo_page')}
+            >
               <Link href="/">
                 <Image
-                  src="/images/dest/logo-small.svg"
+                  className="svg_color"
+                  src="/images/dest/logo-small-w.svg"
                   height="60"
                   width="111"
                   alt=""
                 />
               </Link>
             </div>
-            <NavBar />
+            <NavBar isInner />
           </div>
           <div className={cxHeader('header__links', 'header__links_page')}>
-            <Link
-              className={`${cxHeader(
-                'header__links-lang',
-                'header__links-lang_b'
-              )} link`}
-              href="#"
-            >
+            <Link className={`${cxHeader('header__links-lang')} link`} href="#">
               Eng
             </Link>
-            <Link
-              className={cxHeader(
-                'header__links-search',
-                'header__links-search_b'
-              )}
-              href="#"
-            >
+            <Link className={cxHeader('header__links-search')} href="#">
               <Image
-                className={cxHeader('icon-search', 'icon-search_b')}
+                className={classNames(cxHeader('icon-search'), 'svg_color')}
                 height="25"
                 width="24"
                 src="/images/dest/icons/search-icon.svg"

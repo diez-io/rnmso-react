@@ -1,31 +1,42 @@
 import classNames from 'classnames/bind';
+import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
 import styles from '@/styles/Main.module.scss';
 import AbonementItem from '@/components/abonement/AbonementItem';
-import { loadAbonementPosts } from '@/lib/loadAfishaPage';
+import { loadAbonementPosts } from '@/lib/loadAbonementsPage';
+import stylesAbonementPage from '@/styles/PageAbonement.module.scss';
+import { setBg } from '@/store/bgSlice';
+import {setActiveMenu} from "@/store/menuSlice";
 
 const cx = classNames.bind(styles);
+const cxAbonement = classNames.bind(stylesAbonementPage);
 
 export async function getStaticProps() {
   const abonements = await loadAbonementPosts();
   return {
     props: {
-      bodyClass: cx('bg-green'),
       abonements,
     },
   };
 }
 
 export default function Abonement({ abonements }) {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(setBg('bg-green'));
+    dispatch(setActiveMenu('calendar'));
+  });
+
   return (
-    <div className={cx('container')}>
+    <div className="container">
       <section className={cx('page-title')}>
-        <h1 className={cx('h1')}>Абонементы</h1>
+        <h1 className="h1">Абонементы</h1>
       </section>
       <section className={cx('page-filter')}>
         <div className={cx('page-filter__grid')}>
           <div className={cx('switch__container')}>
             <div className={cx('switch__toggle-container')}>
-              <input id="year1" name="year" type="radio" checked />
+              <input id="year1" name="year" type="radio" defaultChecked />
               <label
                 htmlFor="year1"
                 className={cx('switch__label', 'switch__label_left')}
@@ -79,9 +90,12 @@ export default function Abonement({ abonements }) {
         />
       </section>
 
-      <section className="page-abonement">
+      <section className={cxAbonement('page-abonement')}>
         {abonements.map((abonement) => (
-          <AbonementItem key={`abonement_${abonement.id}`} abonement={abonement} />
+          <AbonementItem
+            key={`abonement_${abonement.id}`}
+            abonement={abonement}
+          />
         ))}
       </section>
     </div>
