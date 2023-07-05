@@ -1,0 +1,41 @@
+.page-diff{
+  margin-bottom: 53px;
+}
+.diff-section{
+  gap: 23px;
+  &:not(:first-child){
+    padding-top: 36px;
+  }
+  &:not(:last-child) {
+    @include section-line-bottom;
+  }
+  @media (max-width: 991px) {
+    gap: 0;
+    &:not(:first-child) {
+      padding-top: 53px;
+    }
+  }
+}
+.diff__title{
+  flex: 0 0 341px;
+  @media (max-width: 991px) {
+    flex: 0 0 100%;
+  }
+}
+.diff-items{
+  padding-top: 10px;
+  @media (max-width: 991px) {
+    padding-top: 31px;
+  }
+}
+.diff-item{
+  width: 100%;
+  padding-bottom: 10px;
+  @include font-size-24;
+  &:not(:last-child){
+    @include section-line-bottom;
+  }
+  @media (max-width: 991px) {
+    padding-bottom: 12px;
+  }
+}

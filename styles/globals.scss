@@ -23,6 +23,10 @@ a {
 a:visited, a:hover{
   text-decoration: unset;
 }
+b{
+  font-family: $font-family--polymer-bold;
+  font-weight: unset;
+}
 body{
   padding: 0;
   margin: 0;
@@ -167,15 +171,33 @@ body{
 }
 .bg-white{
   background-color: $color-background;
+  .customModal{
+    background-color: $color-background;
+  }
 }
 .bg-green{
   background-color: $color-green;
+  .customModal{
+    background-color: $color-green;
+  }
+}
+.bg-lightgreen{
+  background-color: $color-lightgreen;
+  .customModal{
+    background-color: $color-lightgreen;
+  }
 }
 .bg-purple{
   background-color: $color-purple;
+  .customModal{
+    background-color: $color-purple;
+  }
 }
 .bg-pink{
   background-color: $color-pink;
+  .customModal{
+    background-color: $color-pink;
+  }
 }
 .bg-gray40{
   background-color: $color-gray40;
@@ -207,7 +229,7 @@ body{
   }
 }
 //dark fonts
-.bg-green, .bg-white, .bg-brown, .bg-pink{
+.bg-green, .bg-white, .bg-brown, .bg-pink, .bg-lightgreen{
   color: $color-dark1a;
   main .link, header .link{
     @include link_b;
@@ -243,7 +265,7 @@ main{
   max-width: 960px;
   overflow: unset;
 
-  background: $color-pink;
+  //background: $color-pink;
   border-radius: 44px;
   box-shadow: unset;
 

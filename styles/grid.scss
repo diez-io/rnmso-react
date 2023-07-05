@@ -65,6 +65,9 @@
 .grid__inner_75{
   flex: 0 0 calc(75% - 5px);
 }
+.grid__inner_100{
+  flex: 0 0 100%;
+}
 .grid__inner{
   @media (max-width: 991px) {
     flex: 0 0 100%;

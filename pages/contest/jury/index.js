@@ -1,32 +1,31 @@
 import { useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
+import { loadSpecialities } from '@/lib/loadSpecialities';
+import PageTitle from '@/components/PageTitle';
+import Tags from '@/components/Tags';
 import { setBg } from '@/store/bgSlice';
 import { setActiveMenu } from '@/store/menuSlice';
-import { getStaff, getStaffMember } from '@/lib/loadStaffPage';
-import Tags from '@/components/Tags';
-import PageTitle from '@/components/PageTitle';
-import StaffItems from '@/components/staff/StaffItems';
-import { loadMemberGroups } from '@/lib/loadMemberGroups';
+import { getContestJury } from '@/lib/loadContestJuryPage';
+import JuryItems from '@/components/contest-jury/JuryItems';
 
 export async function getStaticProps() {
-  const staff = await getStaff();
-  const tags = await loadMemberGroups();
+  const jury = await getContestJury();
+  const tags = await loadSpecialities();
 
   return {
     props: {
-      staff,
+      jury,
       tags,
     },
   };
 }
 
-export default function Staff({ staff, tags }) {
+export default function PageJury({ jury, tags }) {
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(setBg('bg-pink'));
-    dispatch(setActiveMenu('orchestra'));
+    dispatch(setBg('bg-lightgreen'));
+    dispatch(setActiveMenu('contest'));
   });
-
   const [members, setMembers] = useState(new Map());
   const [membersByGroup, setMembersByGroup] = useState(new Map());
   const [filter, setFilter] = useState([]);
@@ -36,12 +35,11 @@ export default function Staff({ staff, tags }) {
     tags.forEach((item) => {
       arr.set(
         item.id,
-        staff.filter((f) => item.id === f.group)
+        jury.filter((f) => item.id === f.speciality)
       );
     });
     setMembersByGroup(arr);
     setMembers(arr);
-    // setMembers(new Map().set('all', staff));
   }, []);
 
   const handleClickTag = (e) => {
@@ -58,14 +56,12 @@ export default function Staff({ staff, tags }) {
       setMembers(filteredMembers);
     } else {
       setMembers(membersByGroup);
-      // setMembers(new Map().set('all', staff));
     }
     setFilter(dataFilter);
   };
-
   return (
     <div className="container">
-      <PageTitle title="Состав оркестра" />
+      <PageTitle title="Жюри конкурса" />
       <Tags
         tags={tags}
         activeTags={filter}
@@ -74,12 +70,7 @@ export default function Staff({ staff, tags }) {
         getPosts={(e) => handleClickTag(e)}
         type="black"
       />
-
-      <StaffItems
-        members={members}
-        tags={tags}
-        getStaffMember={getStaffMember}
-      />
+      <JuryItems members={members} tags={tags} />
     </div>
   );
 }

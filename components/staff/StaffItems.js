@@ -1,3 +1,4 @@
+// items   /staff/   /contest/members/
 import { useEffect, useState } from 'react';
 import classNames from 'classnames/bind';
 import ModalWindow from '@/components/ModalWindow';
@@ -34,27 +35,28 @@ export default function StaffItems({ members, tags, getStaffMember }) {
 
   const results = [];
   members.forEach((items, group) => {
-    results.push(
-      <section key={`group_${group}`} className={cxStaff('staff-section')}>
-        {group !== 'all' && (
+    items.length &&
+      results.push(
+        <section key={`group_${group}`} className={cxStaff('staff-section')}>
+          {/* {group !== 'all' && ( */}
           <h3 className="h3">{tags.filter((f) => f.id === group)[0]?.title}</h3>
-        )}
-        <div
-          className={classNames(
-            cxStaff('staff-members'),
-            cx('d-flex', 'flex-wrap', 'justify-start')
-          )}
-        >
-          {items.map((item) => (
-            <StaffItem
-              key={`member_${item.id}`}
-              member={item}
-              handleClickMember={handleClickMember}
-            />
-          ))}
-        </div>
-      </section>
-    );
+          {/* )} */}
+          <div
+            className={classNames(
+              cxStaff('staff-members'),
+              cx('d-flex', 'flex-wrap', 'justify-start')
+            )}
+          >
+            {items.map((item) => (
+              <StaffItem
+                key={`member_${item.id}`}
+                member={item}
+                handleClickMember={handleClickMember}
+              />
+            ))}
+          </div>
+        </section>
+      );
   });
 
   return (

@@ -1,0 +1,20 @@
+.page-text{
+  padding-bottom: 53px;
+}
+.text__big{
+  margin-bottom: 27px;
+  @include font-size-28;
+}
+.text__normal{
+  max-width: 824px;
+  @include font-size-24;
+  p{
+    @include m0p0;
+    &:not(:last-child){
+      padding-bottom: 20px;
+    }
+  }
+  @media (max-width: 991px) {
+    @include font-size-28;
+  }
+}

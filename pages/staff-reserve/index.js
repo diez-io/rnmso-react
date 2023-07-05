@@ -35,7 +35,7 @@ export default function ReserveStaff({ staff, tags, aboutReserve }) {
   const onCloseModal = () => setOpen(false);
 
   const [members, setMembers] = useState(new Map());
-  const [membersByGroup, setMembersByGroup] = useState(null);
+  const [membersByGroup, setMembersByGroup] = useState(new Map());
   const [filter, setFilter] = useState([]);
 
   const dispatch = useDispatch();
@@ -53,7 +53,8 @@ export default function ReserveStaff({ staff, tags, aboutReserve }) {
       );
     });
     setMembersByGroup(arr);
-    setMembers(new Map().set('all', staff));
+    setMembers(arr);
+    // setMembers(new Map().set('all', staff));
   }, []);
 
   const handleClick = (e) => {
@@ -69,7 +70,8 @@ export default function ReserveStaff({ staff, tags, aboutReserve }) {
       );
       setMembers(filteredMembers);
     } else {
-      setMembers(new Map().set('all', staff));
+      setMembers(membersByGroup);
+      // setMembers(new Map().set('all', staff));
     }
     setFilter(dataFilter);
   };

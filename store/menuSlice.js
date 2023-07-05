@@ -4,7 +4,7 @@ const initialState = {
   items: {
     orchestra: { name: 'оркестр', link: 'staff' },
     calendar: { name: 'афиша', link: 'calendar' },
-    competition: { name: 'конкурс', link: 'competition' },
+    contest: { name: 'конкурс', link: 'contest/members' },
     media: { name: 'медиа', link: 'video' },
     info: { name: 'информация', link: 'info' },
   },

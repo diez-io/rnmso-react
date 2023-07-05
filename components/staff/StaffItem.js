@@ -27,7 +27,9 @@ export default function StaffItem({ member, handleClickMember }) {
       <div className={cxStaff('staff-member__name')}>
         {member.first_name} {member.last_name}
       </div>
-      <div className={cxStaff('staff-member__position')}>{member.status}</div>
+      <div className={cxStaff('staff-member__position')}>
+        {member.status ? member.status : member.institution}
+      </div>
     </div>
   );
 }
