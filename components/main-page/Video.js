@@ -1,83 +1,17 @@
+import { useState } from 'react';
 import classNames from 'classnames/bind';
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
 import Image from 'next/image';
-import { useDispatch } from 'react-redux';
-import styles from '@/styles/Main.module.scss';
-import Tags from '@/components/Tags';
-import {
-  getVideoPosts,
-} from '@/lib/loadVideoPage';
-import Player from '@/components/Player';
-import stylesVideo from '@/styles/PageVideos.module.scss';
-import PageTitle from '../../components/PageTitle';
-import { setBg } from '@/store/bgSlice';
-import { setActiveMenu } from '@/store/menuSlice';
 import ModalWindow from '@/components/ModalWindow';
-import { loadVideo, loadVideoTags } from '@/lib/loadVideo';
-import {displayDateVar2} from "../api/date";
+import Player from '@/components/Player';
+import styles from '@/styles/Main.module.scss';
+import stylesVideo from '@/styles/PageMainVideo.module.scss';
+import {displayDateVar2} from "@/pages/api/date";
 
 const cx = classNames.bind(styles);
 const cxVideo = classNames.bind(stylesVideo);
 
-export async function getStaticProps() {
-  const videoPosts = await loadVideo();
-  const tags = await loadVideoTags();
-  return {
-    props: {
-      videoPosts,
-      tags,
-    },
-  };
-}
-
-export default function Video({ videoPosts, tags }) {
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(setBg('bg-gray40'));
-    dispatch(setActiveMenu('media'));
-  });
-
-  const [posts, setPosts] = useState(videoPosts);
-  const [filter, setFilter] = useState([]);
-
-  const handleClick = (e) => {
-    let dataFilter = e?.currentTarget.value;
-    dataFilter = filter.includes(dataFilter)
-      ? filter.filter((f) => f !== dataFilter)
-      : filter.concat(dataFilter);
-    getVideoPosts(dataFilter.join(','))
-      .then((res) => setPosts(res))
-      .catch((err) => console.log(err));
-    setFilter(dataFilter);
-  };
-  return (
-    <div className="container">
-      <PageTitle
-        type="links"
-        title="Видео"
-        links={[
-          { link: '/video', name: 'Видео', selected: true },
-          { link: '/photo', name: 'Фото' },
-          { link: '/news', name: 'Новости' },
-          { link: '/press', name: 'Пресса' },
-        ]}
-      />
-      <Tags
-        tags={tags}
-        activeTags={filter}
-        nameField="name"
-        filterField="id"
-        getPosts={(e) => handleClick(e)}
-      />
-      <section className={cxVideo('page-videos')}>
-        <VideoItems posts={posts} />
-      </section>
-    </div>
-  );
-}
-
-function VideoItems({ posts }) {
+export default function Video({ posts }) {
   const [open, setOpen] = useState(false);
   const [url, setUrl] = useState('');
 
@@ -105,14 +39,10 @@ function VideoItems({ posts }) {
             {displayDateVar2(posts[0].date)} · {posts[0].place}
           </p>
           <h4 className="h4">
-            <Link className="link" href={`/video/${posts[0].id}`}>
+            <Link className="link" href="#">
               {posts[0].title}
             </Link>
           </h4>
-          <div className={cxVideo('video-article__info')}>
-            <p dangerouslySetInnerHTML={{ __html: posts[0].text }} />
-            <p dangerouslySetInnerHTML={{ __html: posts[0].program }} />
-          </div>
         </div>
         <div className={cx('grid__inner', 'grid__inner_50')}>
           <div className={cx('square-img__item')}>
@@ -133,9 +63,7 @@ function VideoItems({ posts }) {
       <div className={cx('d-flex', 'flex-wrap')}>
         {posts.map(
           (post, i) =>
-            i > 0 &&
-            post.video &&
-            post.video_thumbnail && (
+            i > 0 && (
               <article
                 key={`video_${post.id}`}
                 className={classNames(
@@ -159,7 +87,7 @@ function VideoItems({ posts }) {
                     {displayDateVar2(post.date)} · {post.place}
                   </p>
                   <h4 className="h4">
-                    <Link className="link" href={`/video/${post.id}`}>
+                    <Link className="link" href="#">
                       {post.title}
                     </Link>
                   </h4>

@@ -25,7 +25,7 @@ export default function StaffItems({ members, tags, getStaffMember }) {
   };
 
   useEffect(() => {
-    fetchDataMember(memberId);
+    //fetchDataMember(memberId);
   }, [memberId]);
 
   const handleClickMember = (e, id) => {

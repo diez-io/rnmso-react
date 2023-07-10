@@ -1,7 +1,5 @@
-local server http://localhost:4200
-
 ## Getting Started
 ```bash
-npm run serve
+npm run dev
 ```
 Open [http://localhost:3001](http://localhost:3001)

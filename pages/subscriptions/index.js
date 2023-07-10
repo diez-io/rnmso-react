@@ -3,24 +3,27 @@ import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import styles from '@/styles/Main.module.scss';
 import AbonementItem from '@/components/abonement/AbonementItem';
-import { loadAbonementPosts } from '@/lib/loadAbonementsPage';
 import stylesAbonementPage from '@/styles/PageAbonement.module.scss';
 import { setBg } from '@/store/bgSlice';
 import {setActiveMenu} from "@/store/menuSlice";
+import {loadAbonements} from "../../lib/loadAbonements";
+import {loadSeason} from "../../lib/loadSeason";
 
 const cx = classNames.bind(styles);
 const cxAbonement = classNames.bind(stylesAbonementPage);
 
 export async function getStaticProps() {
-  const abonements = await loadAbonementPosts();
+  const season = await loadSeason();
+  const abonements = await loadAbonements();
   return {
     props: {
       abonements,
+      season
     },
   };
 }
 
-export default function Abonement({ abonements }) {
+export default function Abonement({ abonements, season }) {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(setBg('bg-green'));
@@ -41,14 +44,14 @@ export default function Abonement({ abonements }) {
                 htmlFor="year1"
                 className={cx('switch__label', 'switch__label_left')}
               >
-                2021/22
+                {season.current_season}/{String(season.current_season+1).slice(-2)}
               </label>
               <input id="year2" name="year" type="radio" />
               <label
                 htmlFor="year2"
                 className={cx('switch__label', 'switch__label_right')}
               >
-                2022/23
+                {season.next_season}/{String(season.next_season+1).slice(-2)}
               </label>
               <div className={cx('switch__toggle')} />
               <div className={cx('switch__pill')} />

@@ -16,34 +16,34 @@ import PosterItem from '@/components/calendar/PosterItem';
 import AbonementsAfisha from '@/components/abonement/AbonementsAfisha';
 import { setBg } from '@/store/bgSlice';
 import {setActiveMenu} from "@/store/menuSlice";
+import {loadAllAfishaIds} from "@/lib/loadAfisha";
+import {loadAfisha, loadAfishaPost} from "../../lib/loadAfisha";
 
 const cx = classNames.bind(styles);
 const cxAfisha = classNames.bind(stylesAfishaPage);
 const cxConcert = classNames.bind(stylesConcertPage);
 
 export async function getStaticPaths() {
-  const paths = await getAllAfishaPostIds();
+  const paths = await loadAllAfishaIds();
   return {
     paths,
-    fallback: false,
+    fallback: "blocking",
   };
 }
 export async function getStaticProps({ params }) {
-  const postData = await getAfishaPost(params.id);
-  const recommendedPosts = await loadReccomendedAfishaPosts(params.id);
-  const abonement = await loadAbonementPost(postData[0].abonementId);
+  const postData = await loadAfishaPost(params.id);
+
+  const recommendedPosts = await loadAfisha("limit=3");
   return {
     props: {
       postData,
       recommendedPosts,
-      abonement,
     },
   };
 }
 export default function CalendarPost({
   postData,
   recommendedPosts,
-  abonement,
 }) {
   const dispatch = useDispatch();
   useEffect(() => {
@@ -51,7 +51,6 @@ export default function CalendarPost({
     dispatch(setActiveMenu('calendar'));
   });
 
-  const data = postData[0];
   return (
     <div className="container">
       <section className={cxConcert('page-concert')}>
@@ -62,7 +61,7 @@ export default function CalendarPost({
               cxConcert('concert-section__photo')
             )}
           >
-            <PhotoCarousel items={data.slider} />
+            <PhotoCarousel items={postData.images} />
           </div>
           <div
             className={classNames(
@@ -71,38 +70,50 @@ export default function CalendarPost({
             )}
           >
             <div className={cxConcert('concert-section__title')}>
-              <p> {data.date}</p>
-              <h4 className="h4">{data.title}</h4>
-              <span>{data.place}</span>
+              <p> {postData.date}</p>
+              <h4 className="h4">{postData.title}</h4>
+              <span>{postData.place}</span>
             </div>
-            <MobPhoto items={data.slider} />
+            <MobPhoto items={postData.images} />
             <div className={cxConcert('concert-section__links')}>
-              <Link className="btn" href="#">
-                билеты
-              </Link>
+              {postData.on_sale && postData.subscription && postData.subscription?.show_buy_button &&
+                <Link className="btn" href={post.subscription.link_buy}>
+                  купить абонемент
+                </Link>
+              }
+              {postData.on_sale && postData.show_buy_button &&
+                <Link href={postData.link_buy} className="btn">
+                  билеты
+                </Link>
+              }
+              {postData.on_sale === false &&
+                <span>билеты проданы</span>
+              }
             </div>
             <div
               className={cxConcert('concert-section__text')}
-              dangerouslySetInnerHTML={{ __html: data.description }}
+              dangerouslySetInnerHTML={{ __html: postData.event_program }}
             />
           </div>
         </div>
-
+        {postData.about &&
         <div className={classNames(cx('d-flex'), cxConcert('concert-section'))}>
           <div className={cx('grid__inner', 'grid__inner_25')}>
             <h4 className="h4">о концерте</h4>
           </div>
           <div className={cx('grid__inner', 'grid__inner_75')}>
             <div
-              className={cxConcert('concert-section__text')}
-              dangerouslySetInnerHTML={{ __html: data.about }}
+                className={cxConcert('concert-section__text')}
+                dangerouslySetInnerHTML={{__html: postData.about}}
             />
           </div>
         </div>
-
+        }
+        {postData.subscription &&
         <div className={cxConcert('concert-section')}>
-          <AbonementsAfisha abonement={abonement} />
+          <AbonementsAfisha abonement={postData.subscription}/>
         </div>
+        }
       </section>
 
       <section className={cxAfisha('page-poster')}>
@@ -127,7 +138,7 @@ function MobPhoto({ items }) {
       )}
     >
       <div className={cxConcert('gallery-mob__items')}>
-        {items.map((item, index) => (
+        {items?.map((item, index) => (
           <picture
             key={`momImage_${index}`}
             className={cxConcert('gallery-mob__item')}

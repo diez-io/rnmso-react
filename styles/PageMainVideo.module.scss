@@ -1,0 +1,30 @@
+@import "video-articles";
+
+.video-article__text{
+  a{
+    @include link_w;
+  }
+}
+.video-article_first{
+  margin-top: -80px;
+  .video-article__text{
+    margin-top: 25%;
+    @media (max-width: 1200px) {
+      margin-top: 0;
+      margin-bottom: 30px;
+    }
+    @media (max-width: 991px) {
+      margin-top: 14px;
+    }
+  }
+  @media (min-width: 992px) and (max-width: 1200px) {
+    align-items: end;
+  }
+  @media (max-width: 991px) {
+    margin-top: 50px;
+    margin-bottom: 0;
+    & > div:first-child{
+      order: 2;
+    }
+  }
+}

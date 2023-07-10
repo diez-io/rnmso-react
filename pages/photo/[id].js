@@ -12,36 +12,36 @@ import { useEffect } from 'react';
 import PageTitle from '@/components/PageTitle';
 import stylesNav from '@/styles/NavPrevNext.module.scss';
 import stylesPhoto from '@/styles/PagePhoto.module.scss';
-import { getAllPhotoPostIds, getPhotoPost } from '@/lib/loadPhotoPage';
 import { setBg } from '@/store/bgSlice';
 import {setActiveMenu} from "@/store/menuSlice";
+import {loadAllPhotoIds, loadPhotoPost} from "../../lib/loadPhoto";
+import {displayDateVar1, displayDateVar2} from "../api/date";
 
 const cxNav = classNames.bind(stylesNav);
 const cxPhoto = classNames.bind(stylesPhoto);
 
 export async function getStaticPaths() {
-  const paths = await getAllPhotoPostIds();
+  const paths = await loadAllPhotoIds();
   return {
     paths,
     fallback: false,
   };
 }
 export async function getStaticProps({ params }) {
-  const postData = await getPhotoPost(params.id);
+  const data = await loadPhotoPost(params.id);
   return {
     props: {
-      postData,
+      data,
     },
   };
 }
-export default function PhotoPost({ postData }) {
+export default function PhotoPost({ data }) {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(setBg('bg-brown'));
     dispatch(setActiveMenu('media'));
   });
 
-  const data = postData[0];
   const onInit = () => {
     console.log('lightGallery has been initialized');
   };
@@ -52,7 +52,7 @@ export default function PhotoPost({ postData }) {
         titleBack="Фото"
         linkBack="/photo"
         title={data.title}
-        titleInfo={`${data.place}<br/>${data.date}`}
+        titleInfo={`${displayDateVar1(data.date)}`}
       />
       <section className={cxPhoto('page-photo')}>
         <LightGallery
@@ -60,9 +60,9 @@ export default function PhotoPost({ postData }) {
           speed={500}
           elementClassNames={cxPhoto('photo-items')}
         >
-          {data.items.map((item) => (
-            <Link href={item} className={cxPhoto('photo-items__img')}>
-              <Image width={304} height={200} src={item} alt="" />
+          {data.preview_photos.map((item) => (
+            <Link href={`https://rnmso.ru${item.image}`} className={cxPhoto('photo-items__img')}>
+              <Image width={304} height={200} src={`https://rnmso.ru${item.image}`} alt="" />
             </Link>
           ))}
         </LightGallery>

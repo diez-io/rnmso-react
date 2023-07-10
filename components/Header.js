@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import classNames from 'classnames/bind';
 import Image from 'next/image';
-import { useDispatch, useSelector } from 'react-redux';
 import styles from '@/styles/Main.module.scss';
 import stylesHeader from '@/styles/Header.module.scss';
 import NavBar from '@/components/NavBar';
@@ -9,12 +8,7 @@ import NavBar from '@/components/NavBar';
 const cx = classNames.bind(styles);
 const cxHeader = classNames.bind(stylesHeader);
 
-export const useAppDispatch = useDispatch;
-export const useAppSelector = useSelector;
-
 export default function Header() {
-  const dispatch = useAppDispatch();
-  const bg = useAppSelector((state) => state.bg.bgClass);
   return (
     <header className={cxHeader('header')}>
       <picture className={cxHeader('header__banner')}>
@@ -45,6 +39,7 @@ export default function Header() {
                 width="24"
                 className={cx('icon-search')}
                 src="images/dest/icons/search-icon.svg"
+                alt=""
               />
             </Link>
           </div>

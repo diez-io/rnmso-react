@@ -1,0 +1,20 @@
+@import "news-articles";
+
+.news-article{
+  width: 80%;
+  margin-top: 31px;
+  &:first-child{
+    margin-top: 42px;
+  }
+  @media (max-width: 991px) {
+    width: 100%;
+    margin-top: 45px;
+  }
+  a{
+    @include link_w;
+  }
+  span{
+    display: block;
+    margin-bottom: 5px;
+  }
+}

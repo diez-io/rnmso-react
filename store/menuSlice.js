@@ -6,7 +6,7 @@ const initialState = {
     calendar: { name: 'афиша', link: 'calendar' },
     contest: { name: 'конкурс', link: 'contest/members' },
     media: { name: 'медиа', link: 'video' },
-    info: { name: 'информация', link: 'info' },
+    info: { name: 'информация', link: 'contacts' },
   },
   active: null,
 };

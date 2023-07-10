@@ -39,6 +39,7 @@
 }
 .abonement-section__column:nth-child(3){
   flex: 0 0 200px;
+  margin-left: auto;
 }
 .abonement-section__title{
   @media (max-width: 991px) {
@@ -106,8 +107,12 @@
   p{
     @include m0p0;
   }
+  strong{
+    font-weight: unset;
+  }
 }
 .abonement-section__actions{
+  text-align: right;
   @media (max-width: 991px) {
     position: absolute;
     top: -5px;
@@ -115,6 +120,10 @@
     max-width: calc(100% - 220px);
   }
   span{
+    display: inline-block;
     @include font-size-24;
+  }
+  a, button{
+    display: inline-block;
   }
 }

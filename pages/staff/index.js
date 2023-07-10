@@ -2,14 +2,14 @@ import { useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { setBg } from '@/store/bgSlice';
 import { setActiveMenu } from '@/store/menuSlice';
-import { getStaff, getStaffMember } from '@/lib/loadStaffPage';
+import { loadStaff, loadStaffMember } from '@/lib/loadStaff';
 import Tags from '@/components/Tags';
 import PageTitle from '@/components/PageTitle';
 import StaffItems from '@/components/staff/StaffItems';
 import { loadMemberGroups } from '@/lib/loadMemberGroups';
 
 export async function getStaticProps() {
-  const staff = await getStaff();
+  const staff = await loadStaff();
   const tags = await loadMemberGroups();
 
   return {
@@ -78,7 +78,7 @@ export default function Staff({ staff, tags }) {
       <StaffItems
         members={members}
         tags={tags}
-        getStaffMember={getStaffMember}
+        getStaffMember={loadStaffMember}
       />
     </div>
   );

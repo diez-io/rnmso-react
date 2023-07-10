@@ -1,0 +1,35 @@
+.masters-articles{
+  @media (max-width: 991px) {
+    gap: 0;
+  }
+}
+.masters-article{
+  margin-top: 25px;
+  @media (max-width: 991px) {
+    margin-top: 30px;
+  }
+}
+.masters-article__text{
+  margin-top: 38px;
+  @media (max-width: 991px) {
+    margin-top: 20px;
+  }
+  p{
+    padding: 0;
+    margin: 0;
+
+    @include font-size-m;
+  }
+}
+.masters-article__text_name{
+  padding-bottom: 28px;
+
+  @include font-size-64;
+  text-transform: lowercase;
+  @media (max-width: 656px), (min-width: 992px) and (max-width: 1320px) {
+    word-break: break-all;
+  }
+  @media (max-width: 991px) {
+    padding-bottom: 15px;
+  }
+}

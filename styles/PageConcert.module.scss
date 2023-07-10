@@ -79,6 +79,17 @@
 
 .concert-section__links{
   margin-bottom: 36px;
+  span{
+    display: block;
+    opacity: 0.6;
+
+    @include font-size-24;
+
+    @media (max-width: 991px) {
+      display: block;
+      text-align: left;
+    }
+  }
   a, button{
     @media (max-width: 991px) {
       width: 100%;

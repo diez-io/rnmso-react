@@ -12,14 +12,14 @@ export default function PhotoCarousel({ items }) {
       dynamicHeight={false}
       showThumbs
       renderThumbs={() =>
-        items.map((image, index) => (
-          <Image key={index} src={image} alt="" width={100} height={100} />
+        items.map((item, index) => (
+          <Image key={`image_${item.id}`} src={`https://rnmso.ru${item.image}`} alt="" width={100} height={100} />
         ))
       }
       className="gallery"
     >
-      {items.map((item, i) => (
-        <img key={`image_${i}`} src={item} alt="" />
+      {items.map((item) => (
+        <img key={`image_${item.id}`} src={`https://rnmso.ru${item.image}`} alt="" />
       ))}
     </Carousel>
   );

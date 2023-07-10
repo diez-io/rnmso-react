@@ -5,37 +5,38 @@ import { useDispatch } from 'react-redux';
 import styles from '@/styles/Main.module.scss';
 import stylesVideoPage from '@/styles/PageVideo.module.scss';
 import Player from '@/components/Player';
-import { getAllVideoPostIds, getVideoPost } from '@/lib/loadVideoPage';
 import PageTitle from '@/components/PageTitle';
 import { setBg } from '@/store/bgSlice';
 import {setActiveMenu} from "@/store/menuSlice";
+import {loadAllVideoIds, loadVideoPost} from "../../lib/loadVideo";
+import {displayDateVar2} from "../api/date";
+import ModalWindow from "../../components/ModalWindow";
 
 const cx = classNames.bind(styles);
 const cxVideo = classNames.bind(stylesVideoPage);
 
 export async function getStaticPaths() {
-  const paths = await getAllVideoPostIds();
+  const paths = await loadAllVideoIds();
   return {
     paths,
     fallback: false,
   };
 }
 export async function getStaticProps({ params }) {
-  const postData = await getVideoPost(params.id);
+  const data = await loadVideoPost(params.id);
   return {
     props: {
-      postData,
+      data,
     },
   };
 }
-export default function VideoPost({ postData }) {
+export default function VideoPost({ data }) {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(setBg('bg-gray40'));
     dispatch(setActiveMenu('media'));
   });
 
-  const data = postData[0];
   const [open, setOpen] = useState(false);
   const [url, setUrl] = useState('');
 
@@ -55,8 +56,8 @@ export default function VideoPost({ postData }) {
               cxVideo('video-section__video')
             )}
           >
-            <picture onClick={() => handleToggle(data.url)}>
-              <Image width={200} height={200} src={data.image} alt="" />
+            <picture onClick={() => handleToggle(data.video)}>
+              <Image width={200} height={200} src={data.video_thumbnail} alt="" />
             </picture>
           </div>
           <div
@@ -66,7 +67,7 @@ export default function VideoPost({ postData }) {
             )}
           >
             <div className={cxVideo('video-section__title')}>
-              <p> {data.date}</p>
+              <p>{displayDateVar2(data.date)}</p>
               <h4 className="h4">{data.title}</h4>
               <span>{data.place}</span>
             </div>
@@ -76,13 +77,13 @@ export default function VideoPost({ postData }) {
                 cxVideo('video-section__video', 'video-section__video_mob')
               )}
             >
-              <picture onClick={() => handleToggle(data.url)}>
-                <Image width={200} height={200} src={data.image} alt="" />
+              <picture onClick={() => handleToggle(data.video)}>
+                <Image width={200} height={200} src={data.video_thumbnail} alt="" />
               </picture>
             </div>
             <div
               className={cxVideo('video-section__text')}
-              dangerouslySetInnerHTML={{ __html: data.description }}
+              dangerouslySetInnerHTML={{ __html: data.text }}
             />
           </div>
         </div>
@@ -100,7 +101,9 @@ export default function VideoPost({ postData }) {
           </div>
         )}
       </section>
-      <Player open={open} closeModal={onCloseModal} url={url} />
+      <ModalWindow open={open} closeModal={onCloseModal} type="video">
+        <Player url={url} />
+      </ModalWindow>
     </div>
   );
 }

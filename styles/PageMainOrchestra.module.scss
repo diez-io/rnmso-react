@@ -1,0 +1,29 @@
+.orchestra-articles{
+  flex-wrap: wrap;
+  @media (max-width: 991px) {
+    gap: 0;
+  }
+}
+.orchestra-article{
+  margin-bottom: 40px;
+  &:first-child{
+    margin-top: 20px;
+    @media (max-width: 991px) {
+      margin-top: 40px;
+    }
+  }
+}
+.orchestra-article__text{
+  margin: 0;
+  padding: 10px 0 0 0;
+}
+.orchestra-article:nth-child(2){
+  @media (min-width: 992px) {
+    margin-top: -78px;
+  }
+}
+.orchestra-article:nth-child(4){
+  @media (min-width: 992px) {
+    margin-top: -100px;
+  }
+}

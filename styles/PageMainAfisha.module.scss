@@ -1,0 +1,131 @@
+.poster-article{
+  @media (max-width: 991px) {
+    margin-bottom: 0;
+    margin-top: 40px;
+  }
+}
+.poster-article__date{
+  flex: 0 0 140px;
+  width: 140px;
+}
+.poster-article__date-num{
+  display: block;
+  padding-top: 14px;
+  padding-bottom: 10px;
+
+  @include font-size-91;
+  color: $color-dark26;
+}
+.poster-article__date-text{
+  padding: 0;
+  margin: 0;
+  width: min-content;
+
+  @include font-size-22;
+}
+.poster-article__text{
+  padding: 7px 0 0 0;
+  p{
+    margin: 0;
+    padding: 20px 0 0 0;
+
+    line-height: 1.1em;
+    @media (max-width: 991px) {
+      padding-top: 15px;
+    }
+  }
+  @media (max-width: 656px), (min-width: 992px) and (max-width: 1320px) {
+    .h4{
+      word-break: break-all;
+    }
+  }
+  @media (max-width: 991px) {
+    padding-right: 0;
+    padding-bottom: 10px;
+  }
+}
+.poster-article__announcement{
+  padding-top: 20px;
+
+  line-height: 1.1em;
+  @media (max-width: 991px) {
+    padding-top: 15px;
+  }
+  p{
+    @include m0p0;
+  }
+  strong{
+    font-weight: unset;
+  }
+}
+.poster-article__place{
+  padding-top: 20px;
+
+  line-height: 1.1em;
+  @media (max-width: 991px) {
+    padding-top: 15px;
+  }
+}
+.poster-article:not(:first-child){
+  .poster-article__img {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 356px;
+    overflow: hidden;
+    margin-top: 8px;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+  }
+}
+.poster-article:first-child{
+  @media (min-width: 992px) {
+    margin-bottom: 50px;
+    margin-top: -86px;
+    .poster-article__text{
+      .h4{
+        padding-right: 60px;
+      }
+    }
+  }
+  @media (min-width: 992px) and (max-width: 1200px) {
+    align-items: end;
+    .poster-article__text{
+      .h4{
+        padding-right: 40px;
+      }
+    }
+  }
+  @media (max-width: 991px) {
+    margin-top: 50px;
+    .poster-article__img {
+      display: block;
+      position: relative;
+      width: 100%;
+      height: 356px;
+      overflow: hidden;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+      }
+    }
+  }
+  & > div:first-child{
+    margin-top: 25%;
+    @media (max-width: 1200px) {
+      margin-top: 0;
+      margin-bottom: 30px;
+    }
+    @media (max-width: 991px) {
+      margin-bottom: 0;
+    }
+  }
+}

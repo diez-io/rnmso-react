@@ -1,23 +1,28 @@
-import classNames from 'classnames/bind';
 import Link from 'next/link';
+
 import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import stylesAfishaPage from '@/styles/PageAfisha.module.scss';
-import { loadAfishaTags, getAfishaPosts } from '@/lib/loadAfishaPage';
+import { useDispatch } from 'react-redux';
+
+import { setBg } from '@/store/bgSlice';
+import { setActiveMenu } from '@/store/menuSlice';
+
+import { loadAfisha, loadAfishaTags } from '@/lib/loadAfisha';
 import Tags from '@/components/Tags';
 import PosterSection from '@/components/calendar/PosterSection';
-import styles from '@/styles/Main.module.scss';
-import { setBg } from '@/store/bgSlice';
-import {setActiveMenu} from "@/store/menuSlice";
-import stylesTitle from "@/styles/TitlePage.module.scss";
-import PageTitle from "@/components/PageTitle";
-
-const cx = classNames.bind(styles);
-const cxAfisha = classNames.bind(stylesAfishaPage);
-const cxTitle = classNames.bind(stylesTitle);
+import PageTitle from '@/components/PageTitle';
+import {getLastDayOfMonth, setRightMonth00} from "../api/date";
 
 export async function getStaticProps() {
-  const afishaPosts = await getAfishaPosts();
+  const dt = new Date();
+  const day = dt.getDate();
+  const year = dt.getFullYear();
+  const month = setRightMonth00(dt.getMonth());
+  let nextMonth = (dt.getMonth() + 3 > 12) ? 0 : dt.getMonth() + 3;
+  const nextMonthLastDay = getLastDayOfMonth(year, nextMonth);
+  nextMonth = setRightMonth00(nextMonth);
+
+  const afishaPosts = await loadAfisha(`dt_after=${day}.${month}.${year}&dt_before=${nextMonthLastDay}.${nextMonth}.${year}`);
+
   const tags = await loadAfishaTags();
   return {
     props: {
@@ -27,6 +32,7 @@ export async function getStaticProps() {
   };
 }
 export default function Calendar({ afishaPosts, tags }) {
+  console.log(afishaPosts);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(setBg('bg-green'));
@@ -41,7 +47,7 @@ export default function Calendar({ afishaPosts, tags }) {
     dataFilter = filter.includes(dataFilter)
       ? filter.filter((f) => f !== dataFilter)
       : filter.concat(dataFilter);
-    getAfishaPosts(dataFilter.join(','))
+    loadAfisha(`tag=${dataFilter.join(',')}`)
       .then((res) => setPosts(res))
       .catch((err) => console.log(err));
     setFilter(dataFilter);
@@ -63,16 +69,12 @@ export default function Calendar({ afishaPosts, tags }) {
       <Tags
         tags={tags}
         activeTags={filter}
-        nameField="title"
-        filterField="slug"
+        nameField="name"
+        filterField="id"
         getPosts={(e) => handleClick(e)}
       />
 
-      <section className={cxAfisha('page-poster')}>
-        {posts?.map((section, i) => (
-          <PosterSection key={`section-poster_${i}`} section={section} />
-        ))}
-      </section>
+      <PosterSection posts={posts} />
     </div>
   );
 }
