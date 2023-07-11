@@ -42,7 +42,7 @@ export default function Staff({ staff, tags }) {
     setMembersByGroup(arr);
     setMembers(arr);
     // setMembers(new Map().set('all', staff));
-  }, []);
+  }, [staff, tags]);
 
   const handleClickTag = (e) => {
     let dataFilter = e?.currentTarget.value;

@@ -8,9 +8,9 @@ import Player from '@/components/Player';
 import PageTitle from '@/components/PageTitle';
 import { setBg } from '@/store/bgSlice';
 import {setActiveMenu} from "@/store/menuSlice";
-import {loadAllVideoIds, loadVideoPost} from "../../lib/loadVideo";
-import {displayDateVar2} from "../api/date";
-import ModalWindow from "../../components/ModalWindow";
+import {loadAllVideoIds, loadVideoPost} from "@/lib/loadVideo";
+import {displayDateVar2} from "@/pages/api/date";
+import ModalWindow from "@/components/ModalWindow";
 
 const cx = classNames.bind(styles);
 const cxVideo = classNames.bind(stylesVideoPage);
@@ -35,10 +35,10 @@ export default function VideoPost({ data }) {
   useEffect(() => {
     dispatch(setBg('bg-gray40'));
     dispatch(setActiveMenu('media'));
-  });
+  }, [dispatch]);
 
   const [open, setOpen] = useState(false);
-  const [url, setUrl] = useState('');
+  const [url, setUrl] = useState(null);
 
   const handleToggle = (url) => {
     setOpen((prev) => !prev);
@@ -57,7 +57,9 @@ export default function VideoPost({ data }) {
             )}
           >
             <picture onClick={() => handleToggle(data.video)}>
-              <Image width={200} height={200} src={data.video_thumbnail} alt="" />
+                {data.video_thumbnail &&
+                    <Image width={200} height={200} src={data.video_thumbnail} alt=""/>
+                }
             </picture>
           </div>
           <div
@@ -78,7 +80,9 @@ export default function VideoPost({ data }) {
               )}
             >
               <picture onClick={() => handleToggle(data.video)}>
-                <Image width={200} height={200} src={data.video_thumbnail} alt="" />
+                  {data.video_thumbnail &&
+                    <Image width={200} height={200} src={data.video_thumbnail} alt=""/>
+                  }
               </picture>
             </div>
             <div

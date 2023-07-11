@@ -40,7 +40,7 @@ export default function PageJury({ jury, tags }) {
     });
     setMembersByGroup(arr);
     setMembers(arr);
-  }, []);
+  }, [jury, tags]);
 
   const handleClickTag = (e) => {
     let dataFilter = e?.currentTarget.value;

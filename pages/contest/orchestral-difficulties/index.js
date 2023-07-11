@@ -41,7 +41,7 @@ export default function OrchestralDifficulties({ difficulties, tags }) {
     });
     setItemsByGroup(arr);
     setItems(arr);
-  }, []);
+  }, [difficulties, tags]);
 
   const handleClickTag = (e) => {
     let dataFilter = e?.currentTarget.value;

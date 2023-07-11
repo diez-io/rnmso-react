@@ -12,7 +12,7 @@ export default function SoloistItems({ items, description,page}) {
     <section className={cxSolo('page-soloists')}>
       <div className={cx('d-flex', 'flex-wrap', 'justify-start')}>
         {items?.map((item) => (
-          <SoloistItem item={item} description={description} page={page} />
+          <SoloistItem key={`solo_${item.id}`} item={item} description={description} page={page} />
         ))}
       </div>
     </section>

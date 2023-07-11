@@ -5,9 +5,7 @@ import Image from 'next/image';
 import { useDispatch } from 'react-redux';
 import styles from '@/styles/Main.module.scss';
 import Tags from '@/components/Tags';
-import {
-  getVideoPosts,
-} from '@/lib/loadVideoPage';
+
 import Player from '@/components/Player';
 import stylesVideo from '@/styles/PageVideos.module.scss';
 import PageTitle from '../../components/PageTitle';
@@ -46,7 +44,7 @@ export default function Video({ videoPosts, tags }) {
     dataFilter = filter.includes(dataFilter)
       ? filter.filter((f) => f !== dataFilter)
       : filter.concat(dataFilter);
-    getVideoPosts(dataFilter.join(','))
+      loadVideo(dataFilter.join(','))
       .then((res) => setPosts(res))
       .catch((err) => console.log(err));
     setFilter(dataFilter);

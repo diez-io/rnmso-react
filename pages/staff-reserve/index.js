@@ -10,10 +10,12 @@ import { setBg } from '@/store/bgSlice';
 import { setActiveMenu } from '@/store/menuSlice';
 import PageTitle from '@/components/PageTitle';
 import Tags from '@/components/Tags';
-import { getStaffMember } from '@/lib/loadStaffPage';
+
 import StaffItems from '@/components/staff/StaffItems';
 import styles from '@/styles/Main.module.scss';
 import ModalWindow from '../../components/ModalWindow';
+import Link from "next/link";
+import {loadStaffMember} from "../../lib/loadStaff";
 
 const cx = classNames.bind(styles);
 
@@ -55,7 +57,7 @@ export default function ReserveStaff({ staff, tags, aboutReserve }) {
     setMembersByGroup(arr);
     setMembers(arr);
     // setMembers(new Map().set('all', staff));
-  }, []);
+  }, [staff, tags]);
 
   const handleClick = (e) => {
     let dataFilter = e?.currentTarget.value;
@@ -97,9 +99,9 @@ export default function ReserveStaff({ staff, tags, aboutReserve }) {
   return (
     <div className="container">
       <PageTitle type="custom" title="Кадровый резерв РНМСО">
-        <a href="/" className="link" onClick={(e) => handleClickAbout(e)}>
+        <Link href="/" className="link" onClick={(e) => handleClickAbout(e)}>
           о кадровом резерве
-        </a>
+        </Link>
       </PageTitle>
       <section className={cx('page-filter')}>
         <div className={cx('page-filter__grid')}>
@@ -150,7 +152,7 @@ export default function ReserveStaff({ staff, tags, aboutReserve }) {
       <StaffItems
         members={members}
         tags={tags}
-        getStaffMember={getStaffMember}
+        getStaffMember={loadStaffMember}
       />
       <ModalWindow open={open} closeModal={onCloseModal}>
         <div className="modal-text">

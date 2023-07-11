@@ -25,7 +25,7 @@ export default function AuditionSchedule({ schedule, tags }) {
   useEffect(() => {
     dispatch(setBg('bg-lightgreen'));
     dispatch(setActiveMenu('contest'));
-  });
+  }, [dispatch]);
   const [items, setItems] = useState(new Map());
   const [itemsByGroup, setItemsByGroup] = useState(new Map());
   const [filter, setFilter] = useState([]);
@@ -41,7 +41,7 @@ export default function AuditionSchedule({ schedule, tags }) {
     });
     setItemsByGroup(arr);
     setItems(arr);
-  }, []);
+  }, [schedule, tags]);
 
   const handleClickTag = (e) => {
     let dataFilter = e?.currentTarget.value;

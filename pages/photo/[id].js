@@ -15,7 +15,7 @@ import stylesPhoto from '@/styles/PagePhoto.module.scss';
 import { setBg } from '@/store/bgSlice';
 import {setActiveMenu} from "@/store/menuSlice";
 import {loadAllPhotoIds, loadPhotoPost} from "../../lib/loadPhoto";
-import {displayDateVar1, displayDateVar2} from "../api/date";
+import {displayDateVar1} from "../api/date";
 
 const cxNav = classNames.bind(stylesNav);
 const cxPhoto = classNames.bind(stylesPhoto);
@@ -60,8 +60,8 @@ export default function PhotoPost({ data }) {
           speed={500}
           elementClassNames={cxPhoto('photo-items')}
         >
-          {data.preview_photos.map((item) => (
-            <Link href={`https://rnmso.ru${item.image}`} className={cxPhoto('photo-items__img')}>
+          {data.preview_photos.map((item, i) => (
+            <Link key={`photo_${i}`} href={`https://rnmso.ru${item.image}`} className={cxPhoto('photo-items__img')}>
               <Image width={304} height={200} src={`https://rnmso.ru${item.image}`} alt="" />
             </Link>
           ))}

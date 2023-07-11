@@ -1,5 +1,5 @@
 import {useDispatch} from "react-redux";
-import {useEffect, useState} from "react";
+import {useEffect} from "react";
 import {setBg} from "../../store/bgSlice";
 import {setActiveMenu} from "../../store/menuSlice";
 import {getAllConductorsSlugs, getConductor} from "../../lib/loadConductorsPage";
@@ -8,11 +8,9 @@ import classNames from "classnames/bind";
 import styles from '@/styles/Main.module.scss';
 import stylesAfishaPage from '@/styles/PageAfisha.module.scss';
 
-import {
-    loadReccomendedAfishaPosts,
-} from '@/lib/loadAfishaPage';
 import PosterItem from "../../components/calendar/PosterItem";
 import SoloCard from "../../components/soloist/SoloCard";
+import {loadAfisha} from "../../lib/loadAfisha";
 
 const cx = classNames.bind(styles);
 const cxAfisha = classNames.bind(stylesAfishaPage);
@@ -26,7 +24,7 @@ export async function getStaticPaths() {
 }
 export async function getStaticProps({ params }) {
     const data = await getConductor(params.slug);
-    const recommendedPosts = await loadReccomendedAfishaPosts(1);
+    const recommendedPosts = await loadAfisha('limit=3');
     return {
         props: {
             data,

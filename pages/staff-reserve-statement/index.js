@@ -25,7 +25,7 @@ export default function StaffReserveStatement() {
           симфонических оркестров Российской Федерации
         </div>
         {statementText.map((item, i) => (
-          <Accordion item={item} open={i === 0} />
+          <Accordion key={`state_${i}`} item={item} open={i === 0} />
         ))}
       </div>
     </div>

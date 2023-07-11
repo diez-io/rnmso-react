@@ -19,7 +19,7 @@ export default function PhotoCarousel({ items }) {
       className="gallery"
     >
       {items.map((item) => (
-        <img key={`image_${item.id}`} src={`https://rnmso.ru${item.image}`} alt="" />
+        <Image key={`image_${item.id}`} src={`https://rnmso.ru${item.image}`} alt="" />
       ))}
     </Carousel>
   );

@@ -26,7 +26,7 @@ export default function StaffReserveStatement() {
         </div>
         <div className={cxStatement('statement-items')}>
           {statementText.map((item, i) => (
-            <Accordion item={item} open={i === 0} />
+            <Accordion key={`state_${i}`} item={item} open={i === 0} />
           ))}
         </div>
         <div className={cxStatement('statement-descr_small')}>

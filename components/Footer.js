@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import styles from '../styles/Main.module.scss';
 import { selectBg } from '@/store/bgSlice';
+import Image from "next/image";
 
 const cx = classNames.bind(styles);
 
@@ -108,13 +109,13 @@ export default function Footer() {
         <div className={cx('footer-bottom')}>
           <div className={cx('footer-bottom__links')}>
             <Link href="#">
-              <img src="/images/dest/logo-small-w.svg" alt="" />
+              <Image src="/images/dest/logo-small-w.svg" alt="" />
             </Link>
             <Link href="#">
-              <img src="/images/dest/logo-footer-1.svg" alt="" />
+              <Image src="/images/dest/logo-footer-1.svg" alt="" />
             </Link>
             <Link href="#">
-              <img src="/images/dest/logo-footer-2.svg" alt="" />
+              <Image src="/images/dest/logo-footer-2.svg" alt="" />
             </Link>
           </div>
           <div className={cx('footer-bottom__copyright')}>

@@ -2,12 +2,6 @@ import classNames from 'classnames/bind';
 import Link from 'next/link';
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
-import {
-  getAfishaPost,
-  getAllAfishaPostIds,
-  loadAbonementPost,
-  loadReccomendedAfishaPosts,
-} from '@/lib/loadAfishaPage';
 import styles from '@/styles/Main.module.scss';
 import stylesAfishaPage from '@/styles/PageAfisha.module.scss';
 import stylesConcertPage from '@/styles/PageConcert.module.scss';

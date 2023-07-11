@@ -4,10 +4,10 @@ import { setBg } from '@/store/bgSlice';
 import { setActiveMenu } from '@/store/menuSlice';
 import PageTitle from '@/components/PageTitle';
 import Tags from '@/components/Tags';
-import { getStaffMember } from '@/lib/loadStaffPage';
 import StaffItems from '@/components/staff/StaffItems';
 import { loadMemberGroups } from '@/lib/loadMemberGroups';
 import { getContestMembers } from '@/lib/loadContestMembersPage';
+import {loadStaffMember} from "../../../lib/loadStaff";
 
 export async function getStaticProps() {
   const contestMembers = await getContestMembers();
@@ -42,7 +42,7 @@ export default function ContestMembers({ contestMembers, tags }) {
     setMembersByGroup(arr);
     // setMembers(new Map().set('all', contestMembers));
     setMembers(arr);
-  }, []);
+  }, [contestMembers, tags]);
 
   const handleClickTag = (e) => {
     let dataFilter = e?.currentTarget.value;
@@ -76,7 +76,7 @@ export default function ContestMembers({ contestMembers, tags }) {
       <StaffItems
         members={members}
         tags={tags}
-        getStaffMember={getStaffMember}
+        getStaffMember={loadStaffMember}
       />
     </div>
   );
